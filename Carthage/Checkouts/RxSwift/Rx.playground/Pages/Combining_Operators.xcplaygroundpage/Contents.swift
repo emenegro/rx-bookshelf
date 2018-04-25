@@ -138,7 +138,7 @@ example("switchLatest") {
     let subject2 = BehaviorSubject(value: "🍎")
     
     let variable = Variable(subject1)
-        
+    
     variable.asObservable()
         .switchLatest()
         .subscribe(onNext: { print($0) })
