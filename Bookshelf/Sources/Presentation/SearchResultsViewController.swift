@@ -13,24 +13,33 @@ import RxCocoa
 class SearchResultsViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     var searchViewModel: SearchViewModel!
+    var flowViewController: BookshelfFlowNavigationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        setupBindings()
+        setupTableViewBindings()
+        setupViewModelBindings()
     }
     
     func setupTableView() {
-        let cellNib = UINib(nibName: "SearchResultTableViewCell", bundle: nil)
+        let cellNib = UINib(nibName: SearchResultTableViewCell.nibName, bundle: nil)
         tableView.register(cellNib, forCellReuseIdentifier: SearchResultTableViewCell.reuseIdentifier)
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorInset = UIEdgeInsets.zero
     }
     
-    func setupBindings() {
+    func setupTableViewBindings() {
+        tableView.rx.modelSelected(Book.self)
+            .subscribe(onNext: { [flowViewController] in
+                flowViewController?.showDetailOf(book: $0)
+            }).disposed(by: disposeBag)
+    }
+    
+    func setupViewModelBindings() {
         searchViewModel.searchOutput
             .drive(tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
-                cell.titleLabel.text = book.title
-                cell.authorsLabel.text = book.authors.joined(separator: ", ")
+                cell.configure(with: book)
             }
             .disposed(by: disposeBag)
     }

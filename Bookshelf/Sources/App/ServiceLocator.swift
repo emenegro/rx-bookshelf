@@ -12,8 +12,8 @@ final class ServiceLocator {
     private static var networkSession = URLSession.shared
 
     static var searchViewModel: SearchViewModel {
-        let searchService = SearchService(networkSession: networkSession)
-        return SearchViewModel(searchService: searchService)
+        let searchService = SearchServiceImpl(networkSession: networkSession)
+        return SearchViewModelImpl(searchService: searchService)
     }
     
     static func injectInitialDependencies(window: UIWindow?) {

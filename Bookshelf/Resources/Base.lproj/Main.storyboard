@@ -62,7 +62,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kl9-Ml-q9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="-442"/>
+            <point key="canvasLocation" x="261" y="-443"/>
+        </scene>
+        <!--Book View Controller-->
+        <scene sceneID="QlZ-Om-osv">
+            <objects>
+                <viewController storyboardIdentifier="BookViewController" id="Rm1-ks-7S2" customClass="BookViewController" customModule="Bookshelf" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aYh-RG-PA6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RyA-9h-R4Y"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TOv-mR-aer" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="718" y="-443"/>
         </scene>
     </scenes>
 </document>

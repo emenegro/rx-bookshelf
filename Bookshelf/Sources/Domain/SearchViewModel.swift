@@ -9,7 +9,13 @@
 import RxSwift
 import RxCocoa
 
-struct SearchViewModel {
+protocol SearchViewModel {
+    var query: Variable<String> { get }
+    var searchOutput: Driver<[Book]> { get }
+    init(searchService: SearchService)
+}
+
+struct SearchViewModelImpl: SearchViewModel {
     let query = Variable("")
     let searchOutput: Driver<[Book]>
     
@@ -19,6 +25,7 @@ struct SearchViewModel {
             .filter({ !$0.isEmpty })
             .distinctUntilChanged()
             .flatMapLatest({ searchService.search(query: $0) })
+            .debug()
             .asDriver(onErrorJustReturn: [])
     }
 }

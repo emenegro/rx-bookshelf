@@ -10,12 +10,14 @@ import UIKit
 
 protocol AppFlowController {
     func configureInitialViewController()
+    func showDetailOf(book: Book)
 }
 
 class BookshelfFlowNavigationController: UINavigationController, AppFlowController {
     private var searchResultsViewController: SearchResultsViewController {
         let searchResultsViewController = SearchResultsViewController(style: .plain)
         searchResultsViewController.searchViewModel = ServiceLocator.searchViewModel
+        searchResultsViewController.flowViewController = self
         return searchResultsViewController
     }
     
@@ -25,5 +27,12 @@ class BookshelfFlowNavigationController: UINavigationController, AppFlowControll
         }
         listViewController.searchViewModel = ServiceLocator.searchViewModel
         listViewController.searchResultsViewController = searchResultsViewController
+    }
+    
+    func showDetailOf(book: Book) {
+        guard let bookViewController = storyboard?.instantiateViewController(withIdentifier: BookViewController.storyboardId) as? BookViewController else {
+            fatalError("BookViewController not found in Main.storyboard")
+        }
+        show(bookViewController, sender: self)
     }
 }

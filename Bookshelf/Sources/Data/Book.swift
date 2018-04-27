@@ -16,6 +16,7 @@ struct Book: Codable {
     let publisher: String
     let publishedDate: String
     let coverImageUrl: URL?
+    var coverImage: Data?
     let isRead: Bool
     
     private enum CodingKeys: String, CodingKey {

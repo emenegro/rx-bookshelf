@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         ServiceLocator.injectInitialDependencies(window: window)
+        AppAppearance.apply(to: window)
         return true
     }
 }
