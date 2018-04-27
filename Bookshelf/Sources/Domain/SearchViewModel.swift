@@ -1,0 +1,26 @@
+//
+//  SearchViewModel.swift
+//  Bookshelf
+//
+//  Created by Mario on 26/4/18.
+//  Copyright © 2018 Mario Negro. All rights reserved.
+//
+
+import RxSwift
+import RxCocoa
+
+struct SearchViewModel {
+    let query = Variable("")
+    let searchOutput: Driver<[Book]>
+    
+    init(searchService: SearchService) {
+        searchOutput = query.asObservable()
+            .throttle(kDelayTime, scheduler: MainScheduler.instance)
+            .filter({ !$0.isEmpty })
+            .distinctUntilChanged()
+            .flatMapLatest({ searchService.search(query: $0) })
+            .asDriver(onErrorJustReturn: [])
+    }
+}
+
+fileprivate let kDelayTime: RxTimeInterval = 0.3

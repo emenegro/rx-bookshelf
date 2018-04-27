@@ -13,31 +13,24 @@ enum SearchResultError: Error {
     case general
 }
 
-enum SearchResult {
-    case success([Book])
-    case error(SearchResultError)
-}
-
 struct SearchService {
-    private let session = URLSession.shared
-    private let host = "http://127.0.0.1:8080"
+    let networkSession: URLSession
+    private let host = Configuration.backendHost.stringValue
+    private let searchEndpoint = Configuration.searchEndpoint.stringValue
     
-    let searchOutput: Observable<SearchResult>
-    
-    init(searchInput: Observable<String>) {
-        searchOutput = searchInput
-            .flatMap({ [host] (query) -> Observable<URL> in
-                let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) ?? ""
-                return Observable.from(optional: URL(string: "\(host)/search?q=\(q)"))
-            })
-            .flatMap({ [session] in
-                session.rx.data(request: URLRequest(url: $0))
-            })
-            .map({ (data) -> SearchResult in
+    func search(query: String) -> Observable<[Book]> {
+        guard
+            let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
+            let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") else {
+                return Observable.error(SearchResultError.general)
+        }
+        return networkSession.rx
+            .data(request: URLRequest(url: url))
+            .debug()
+            .map({ (data) -> [Book] in
                 let decoder = JSONDecoder()
                 let books = try decoder.decode([Book].self, from: data)
-                return SearchResult.success(books)
+                return books
             })
-            .catchErrorJustReturn(SearchResult.error(SearchResultError.general))
     }
 }

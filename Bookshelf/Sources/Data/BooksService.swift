@@ -59,7 +59,7 @@ struct BooksService {
         
         markAsReadOutput = markAsReadInput
             .flatMap({ [host, session] book -> Observable<Data> in
-                let url = URL(string: "\(host)/books/\(book.id!)")!
+                let url = URL(string: "\(host)/books/\(book.id)")!
                 var request = URLRequest(url: url)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "put"
@@ -74,7 +74,7 @@ struct BooksService {
         
         deleteOutput = deleteInput
             .flatMap({ [host, session] book -> Observable<Data> in
-                let url = URL(string: "\(host)/books/\(book.id!)")!
+                let url = URL(string: "\(host)/books/\(book.id)")!
                 var request = URLRequest(url: url)
                 request.httpMethod = "delete"
                 return session.rx.data(request: request)
