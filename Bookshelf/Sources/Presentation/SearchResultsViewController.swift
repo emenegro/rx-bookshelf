@@ -37,6 +37,7 @@ class SearchResultsViewController: UITableViewController {
     }
     
     func bindViewModel() {
+        tableView.dataSource = nil
         searchViewModel.searchOutput
             .drive(tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
