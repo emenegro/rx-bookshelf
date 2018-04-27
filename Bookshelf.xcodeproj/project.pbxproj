@@ -13,6 +13,9 @@
 		3A25CEC820936FDC009C0C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC420936FDC009C0C15 /* AppDelegate.swift */; };
 		3A25CEC920936FDC009C0C15 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC520936FDC009C0C15 /* Configuration.swift */; };
 		3A33708A20938BAA006B6166 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708920938BAA006B6166 /* AppAppearance.swift */; };
+		3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708B209390F4006B6166 /* BookViewModel.swift */; };
+		3A33708E209398F4006B6166 /* URL+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708D209398F4006B6166 /* URL+Rx.swift */; };
+		3A33709020939DD9006B6166 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708F20939DD9006B6166 /* L10n.swift */; };
 		3A33B3242090AC080059A34E /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33B3232090AC080059A34E /* SearchService.swift */; };
 		3A33B3262090AC1D0059A34E /* BooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33B3252090AC1D0059A34E /* BooksService.swift */; };
 		3A33B32C2091D0120059A34E /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33B32B2091D0120059A34E /* Localizable.swift */; };
@@ -42,6 +45,9 @@
 		3A25CEC420936FDC009C0C15 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A25CEC520936FDC009C0C15 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3A33708920938BAA006B6166 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
+		3A33708B209390F4006B6166 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		3A33708D209398F4006B6166 /* URL+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Rx.swift"; sourceTree = "<group>"; };
+		3A33708F20939DD9006B6166 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		3A33B3232090AC080059A34E /* SearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		3A33B3252090AC1D0059A34E /* BooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksService.swift; sourceTree = "<group>"; };
 		3A33B32B2091D0120059A34E /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
@@ -111,6 +117,7 @@
 				3A33708920938BAA006B6166 /* AppAppearance.swift */,
 				3A25CEC420936FDC009C0C15 /* AppDelegate.swift */,
 				3A25CEC520936FDC009C0C15 /* Configuration.swift */,
+				3A33708F20939DD9006B6166 /* L10n.swift */,
 				3A25CEC220936FDC009C0C15 /* ServiceLocator.swift */,
 			);
 			path = App;
@@ -133,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				3A33B32B2091D0120059A34E /* Localizable.swift */,
+				3A33708D209398F4006B6166 /* URL+Rx.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -184,6 +192,7 @@
 		3AD2F5142091D5B900E96A4A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3A33708B209390F4006B6166 /* BookViewModel.swift */,
 				3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */,
 			);
 			path = Domain;
@@ -290,9 +299,12 @@
 			files = (
 				3A33B3262090AC1D0059A34E /* BooksService.swift in Sources */,
 				3AD2F51C2091E41000E96A4A /* SearchResultsViewController.swift in Sources */,
+				3A33709020939DD9006B6166 /* L10n.swift in Sources */,
 				3AD2F5162091D5CB00E96A4A /* SearchViewModel.swift in Sources */,
+				3A33708E209398F4006B6166 /* URL+Rx.swift in Sources */,
 				3A9F3BFA209363D800E38A59 /* BooksMapper.swift in Sources */,
 				3A25CEC620936FDC009C0C15 /* ServiceLocator.swift in Sources */,
+				3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */,
 				3A33B3242090AC080059A34E /* SearchService.swift in Sources */,
 				3A33B32C2091D0120059A34E /* Localizable.swift in Sources */,
 				3A69EC4F20907886002D00E8 /* Book.swift in Sources */,

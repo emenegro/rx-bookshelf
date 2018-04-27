@@ -19,7 +19,7 @@ class SearchResultsViewController: UITableViewController {
         super.viewDidLoad()
         setupTableView()
         setupTableViewBindings()
-        setupViewModelBindings()
+        bindViewModel()
     }
     
     func setupTableView() {
@@ -36,7 +36,7 @@ class SearchResultsViewController: UITableViewController {
             }).disposed(by: disposeBag)
     }
     
-    func setupViewModelBindings() {
+    func bindViewModel() {
         searchViewModel.searchOutput
             .drive(tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)

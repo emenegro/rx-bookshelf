@@ -7,24 +7,24 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class SearchResultTableViewCell: UITableViewCell {
     static let reuseIdentifier = "SearchResultTableViewCell"
     static let nibName = "SearchResultTableViewCell"
+    private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorsLabel: UILabel!
     
     func configure(with book: Book) {
         titleLabel.text = book.title
-        authorsLabel.text = book.authors.joined(separator: ", ")
-        DispatchQueue.global().async {
-            guard let url = book.coverImageUrl else { return }
-            guard let data = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                self.coverImageView.image = UIImage(data: data)
-            }
-        }
+        authorsLabel.text = book.authorsString
+        book.coverImageUrl?.remoteImage
+            .observeOn(MainScheduler.instance)
+            .bind(to: self.coverImageView.rx.image)
+            .disposed(by: disposeBag)
     }
     
     override func prepareForReuse() {

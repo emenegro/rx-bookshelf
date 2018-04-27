@@ -31,5 +31,6 @@ struct SearchServiceImpl: SearchService, BooksMapper {
         return networkSession.rx
             .data(request: URLRequest(url: url))
             .map({ [mapBooks] in try mapBooks($0) })
+            .startWith([])
     }
 }

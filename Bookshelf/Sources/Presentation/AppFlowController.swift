@@ -33,6 +33,8 @@ class BookshelfFlowNavigationController: UINavigationController, AppFlowControll
         guard let bookViewController = storyboard?.instantiateViewController(withIdentifier: BookViewController.storyboardId) as? BookViewController else {
             fatalError("BookViewController not found in Main.storyboard")
         }
+        let viewModel = BookViewModelImpl(book: book)
+        bookViewController.bookViewModel = viewModel
         show(bookViewController, sender: self)
     }
 }

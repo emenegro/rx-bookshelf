@@ -19,6 +19,10 @@ struct Book: Codable {
     var coverImage: Data?
     let isRead: Bool
     
+    var authorsString: String {
+        return authors.joined(separator: ", ")
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case title, authors, description, publisher, publishedDate, coverImageUrl, isRead
