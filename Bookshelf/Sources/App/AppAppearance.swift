@@ -10,7 +10,7 @@ import UIKit
 
 struct AppColors {
     static let background = UIColor.white
-    static let foreground = UIColor.black
+    static let foreground = UIColor.darkGray
     static let userColor = UIColor(red:0.45, green:0.33, blue:0.69, alpha:1.00)
     static let opponentColor = UIColor(red:0.85, green:0.35, blue:0.57, alpha:1.00)
     static let tint = UIColor(red:0.70, green:0.07, blue:0.56, alpha:1.00)
@@ -31,8 +31,10 @@ private extension AppAppearance {
     }
     
     static func applyNavigationBarStyle() {
+        let attributes = [NSAttributedStringKey.foregroundColor : AppColors.foreground]
         let appearance = UINavigationBar.appearance()
         appearance.tintColor = AppColors.tint
-        appearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor : AppColors.foreground]
+        appearance.titleTextAttributes = attributes
+        appearance.largeTitleTextAttributes = attributes
     }
 }

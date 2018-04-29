@@ -16,7 +16,6 @@ class ListViewController: UIViewController {
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: searchResultsViewController)
         searchController.searchResultsUpdater = searchResultsViewController
-        searchController.hidesNavigationBarDuringPresentation = false
         return searchController
     }()
     
