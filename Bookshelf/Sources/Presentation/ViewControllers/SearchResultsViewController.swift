@@ -43,7 +43,7 @@ private extension SearchResultsViewController {
 private extension SearchResultsViewController {
     func bindViewModel() {
         tableView.dataSource = nil
-        searchViewModel.searchOutput
+        searchViewModel.results
             .drive(tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
             }

@@ -18,7 +18,7 @@ protocol BooksService {
     func list() -> Observable<[Book]>
     func add(book: Book) -> Observable<Book>
     func markAsRead(book: Book, isRead: Bool) -> Observable<Book>
-    func delete(book: Book) -> Observable<Void>
+    func delete(book: Book) -> Observable<Book>
 }
 
 struct BooksServiceImpl {
@@ -70,7 +70,7 @@ extension BooksServiceImpl: BooksService {
             .mapBook()
     }
 
-    func delete(book: Book) -> Observable<Void> {
+    func delete(book: Book) -> Observable<Book> {
         return url(bookId: book.id)
             .map({
                 var request = URLRequest(url: $0)
@@ -78,7 +78,7 @@ extension BooksServiceImpl: BooksService {
                 return request
             })
             .execute(in: networkSession)
-            .map({ _ -> Void in return () })
+            .mapBook()
     }
 }
 

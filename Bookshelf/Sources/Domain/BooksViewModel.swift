@@ -14,7 +14,6 @@ protocol BooksViewModel {
     var getList: PublishSubject<Void> { get }
     // Outputs
     var list: Driver<[Book]> { get }
-    init(booksService: BooksService)
 }
 
 struct BooksViewModelImpl: BooksViewModel {
@@ -23,9 +22,11 @@ struct BooksViewModelImpl: BooksViewModel {
     
     init(booksService: BooksService) {
         list = getList
-            .throttle(0.5, scheduler: MainScheduler.instance)
+            .throttle(kListDelay, scheduler: MainScheduler.instance)
             .flatMap({ booksService.list() })
             .startWith([])
             .asDriver(onErrorJustReturn: [])
     }
 }
+
+private let kListDelay: RxTimeInterval = 0.5

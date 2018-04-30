@@ -10,17 +10,18 @@ import RxSwift
 import RxCocoa
 
 protocol SearchViewModel {
+    // Inputs
     var query: Variable<String> { get }
-    var searchOutput: Driver<[Book]> { get }
-    init(searchService: SearchService)
+    // Outputs
+    var results: Driver<[Book]> { get }
 }
 
 struct SearchViewModelImpl: SearchViewModel {
     let query = Variable("")
-    let searchOutput: Driver<[Book]>
+    let results: Driver<[Book]>
     
     init(searchService: SearchService) {
-        searchOutput = query.asObservable()
+        results = query.asObservable()
             .throttle(kDelayTime, scheduler: MainScheduler.instance)
             .filter({ !$0.isEmpty })
             .distinctUntilChanged()
