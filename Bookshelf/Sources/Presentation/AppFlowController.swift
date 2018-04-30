@@ -16,7 +16,7 @@ protocol AppFlowController {
 class BookshelfFlowNavigationController: UINavigationController, AppFlowController {
     private var searchResultsViewController: SearchResultsViewController {
         let searchResultsViewController = SearchResultsViewController(style: .plain)
-        searchResultsViewController.searchViewModel = ServiceLocator.searchViewModel
+        ServiceLocator.injectDependencies(to: searchResultsViewController)
         searchResultsViewController.flowViewController = self
         return searchResultsViewController
     }
@@ -25,7 +25,7 @@ class BookshelfFlowNavigationController: UINavigationController, AppFlowControll
         guard let listViewController = topViewController as? ListViewController else {
             fatalError("Initial UI is not correctly configured, please review Main.storyboard")
         }
-        listViewController.searchViewModel = ServiceLocator.searchViewModel
+        ServiceLocator.injectDependencies(to: listViewController)
         listViewController.searchResultsViewController = searchResultsViewController
     }
     
@@ -33,8 +33,7 @@ class BookshelfFlowNavigationController: UINavigationController, AppFlowControll
         guard let bookViewController = storyboard?.instantiateViewController(withIdentifier: BookViewController.storyboardId) as? BookViewController else {
             fatalError("BookViewController not found in Main.storyboard")
         }
-        let viewModel = BookViewModelImpl(book: book)
-        bookViewController.bookViewModel = viewModel
+        ServiceLocator.injectDependencies(to: bookViewController, using: book)
         show(bookViewController, sender: self)
     }
 }

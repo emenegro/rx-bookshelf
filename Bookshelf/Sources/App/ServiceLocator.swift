@@ -10,8 +10,7 @@ import UIKit
 
 final class ServiceLocator {
     private static var networkSession = URLSession.shared
-
-    static var searchViewModel: SearchViewModel {
+    private static var searchViewModel: SearchViewModel {
         let searchService = SearchServiceImpl(networkSession: networkSession)
         return SearchViewModelImpl(searchService: searchService)
     }
@@ -21,5 +20,18 @@ final class ServiceLocator {
             fatalError("Initial UI is not correctly configured, please review Main.storyboard")
         }
         flowViewController.configureInitialViewController()
+    }
+    
+    static func injectDependencies(to listViewController: ListViewController) {
+        listViewController.searchViewModel = searchViewModel
+    }
+    
+    static func injectDependencies(to searchResultsViewController: SearchResultsViewController) {
+        searchResultsViewController.searchViewModel = searchViewModel
+    }
+    
+    static func injectDependencies(to bookViewController: BookViewController, using book: Book) {
+        let viewModel = BookViewModelImpl(book: book)
+        bookViewController.bookViewModel = viewModel
     }
 }
