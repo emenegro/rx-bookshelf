@@ -9,7 +9,7 @@
 import RxSwift
 import RxCocoa
 
-enum SearchResultError: Error {
+enum SearchError: Error {
     case wrongUrl
 }
 
@@ -17,7 +17,7 @@ protocol SearchService {
     func search(query: String) -> Observable<[Book]>
 }
 
-struct SearchServiceImpl: SearchService, BooksMapper {
+struct SearchServiceImpl: SearchService {
     let networkSession: URLSession
     private let host = Configuration.backendHost.stringValue
     private let searchEndpoint = Configuration.searchEndpoint.stringValue
@@ -26,11 +26,11 @@ struct SearchServiceImpl: SearchService, BooksMapper {
         guard
             let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
             let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") else {
-                return Observable.error(SearchResultError.wrongUrl)
+                return Observable.error(SearchError.wrongUrl)
         }
         return networkSession.rx
             .data(request: URLRequest(url: url))
-            .map({ [mapBooks] in try mapBooks($0) })
+            .mapBooks()
             .startWith([])
     }
 }
