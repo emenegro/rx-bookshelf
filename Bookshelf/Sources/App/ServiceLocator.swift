@@ -14,6 +14,10 @@ final class ServiceLocator {
         let searchService = SearchServiceImpl(networkSession: networkSession)
         return SearchViewModelImpl(searchService: searchService)
     }
+    private static var booksViewModel: BooksViewModel {
+        let booksService = BooksServiceImpl(networkSession: networkSession)
+        return BooksViewModelImpl(booksService: booksService)
+    }
     
     static func injectInitialDependencies(window: UIWindow?) {
         guard let flowViewController = window?.rootViewController as? BookshelfFlowNavigationController else {
@@ -23,7 +27,7 @@ final class ServiceLocator {
     }
     
     static func injectDependencies(to listViewController: ListViewController) {
-        listViewController.searchViewModel = searchViewModel
+        listViewController.booksViewModel = booksViewModel
     }
     
     static func injectDependencies(to searchResultsViewController: SearchResultsViewController) {

@@ -9,6 +9,7 @@
 import Foundation
 
 enum L10n: String {
+    case addBook = "add_book"
     case detail
 }
 

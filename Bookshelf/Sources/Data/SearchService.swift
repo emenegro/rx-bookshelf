@@ -17,20 +17,26 @@ protocol SearchService {
     func search(query: String) -> Observable<[Book]>
 }
 
-struct SearchServiceImpl: SearchService {
+struct SearchServiceImpl {
     let networkSession: URLSession
     private let host = Configuration.backendHost.stringValue
     private let searchEndpoint = Configuration.searchEndpoint.stringValue
     
-    func search(query: String) -> Observable<[Book]> {
-        guard
-            let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
-            let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") else {
-                return Observable.error(SearchError.wrongUrl)
+    private func url(query: String) -> Observable<URL> {
+        if let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
+           let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") {
+            return Observable<URL>.just(url)
+        } else {
+            return Observable.error(BooksError.wrongUrl)
         }
-        return networkSession.rx
-            .data(request: URLRequest(url: url))
+    }
+}
+
+extension SearchServiceImpl: SearchService {
+    func search(query: String) -> Observable<[Book]> {
+        return url(query: query)
+            .map({ URLRequest(url: $0) })
+            .execute(in: networkSession)
             .mapBooks()
-            .startWith([])
     }
 }

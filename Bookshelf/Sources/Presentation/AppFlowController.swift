@@ -27,6 +27,7 @@ class BookshelfFlowNavigationController: UINavigationController, AppFlowControll
         }
         ServiceLocator.injectDependencies(to: listViewController)
         listViewController.searchResultsViewController = searchResultsViewController
+        listViewController.flowViewController = self
     }
     
     func showDetailOf(book: Book) {

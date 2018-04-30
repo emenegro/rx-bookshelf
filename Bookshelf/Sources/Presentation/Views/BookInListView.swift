@@ -1,8 +1,8 @@
 //
-//  SearchResultTableViewCell.swift
+//  BookInListView.xib
 //  Bookshelf
 //
-//  Created by Mario on 26/4/18.
+//  Created by Mario on 30/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
 //
 
@@ -10,9 +10,8 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchResultTableViewCell: UITableViewCell {
-    static let reuseIdentifier = "SearchResultTableViewCell"
-    static let nibName = "SearchResultTableViewCell"
+class BookInListView: UIView {
+    static let nibName = "BookInListView"
     private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -27,7 +26,7 @@ class SearchResultTableViewCell: UITableViewCell {
             .disposed(by: disposeBag)
     }
     
-    override func prepareForReuse() {
+    func prepareForReuse() {
         titleLabel.text = nil
         authorsLabel.text = nil
         coverImageView.image = nil

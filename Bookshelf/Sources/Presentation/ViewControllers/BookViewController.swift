@@ -18,25 +18,35 @@ class BookViewController: UIViewController {
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     var bookViewModel: BookViewModel!
-    
+}
+
+extension BookViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = L10n.detail.localized
         bindViewModel()
     }
-    
+}
+
+private extension BookViewController {
     func bindViewModel() {
         bookViewModel.book
             .asDriver()
             .drive(onNext: {
-                $0.coverImageUrl?.remoteImage
-                    .observeOn(MainScheduler.instance)
-                    .bind(to: self.coverImageView.rx.image)
-                    .disposed(by: self.disposeBag)
-                self.titleLabel.text = $0.title
-                self.authorsLabel.text = $0.authorsString
-                self.descriptionLabel.text = $0.description
+                self.populate(with: $0)
             })
             .disposed(by: disposeBag)
+    }
+}
+
+private extension BookViewController {
+    func populate(with book: Book) {
+        book.coverImageUrl?.remoteImage
+            .observeOn(MainScheduler.instance)
+            .bind(to: coverImageView.rx.image)
+            .disposed(by: self.disposeBag)
+        titleLabel.text = book.title
+        authorsLabel.text = book.authorsString
+        descriptionLabel.text = book.description
     }
 }
