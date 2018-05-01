@@ -10,20 +10,22 @@ import RxSwift
 import RxCocoa
 
 protocol BooksViewModel {
-    // Inputs
-    var getList: PublishSubject<Void> { get }
-    // Outputs
-    var list: Driver<[Book]> { get }
+    func set(getListTrigger: Observable<Void>) -> Driver<[Book]>
 }
 
-struct BooksViewModelImpl: BooksViewModel {
-    var getList = PublishSubject<Void>()
-    let list: Driver<[Book]>
+struct BooksViewModelImpl {
+    let booksService: BooksService
     
     init(booksService: BooksService) {
-        list = getList
+        self.booksService = booksService
+    }
+}
+
+extension BooksViewModelImpl: BooksViewModel {
+    func set(getListTrigger: Observable<Void>) -> Driver<[Book]> {
+        return getListTrigger
             .throttle(kListDelay, scheduler: MainScheduler.instance)
-            .flatMap({ booksService.list() })
+            .flatMap({ self.booksService.list() })
             .startWith([])
             .asDriver(onErrorJustReturn: [])
     }

@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WrV-b6-obg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="WrV-b6-obg">
                                 <rect key="frame" x="0.0" y="116" width="375" height="551"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -64,6 +64,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kl9-Ml-q9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="572" y="-443"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="ILC-OK-bk4">
+            <objects>
+                <tableViewController storyboardIdentifier="SearchResultsViewController" id="d35-tO-Ina" customClass="SearchResultsViewController" customModule="Bookshelf" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qia-Rf-KHC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="d35-tO-Ina" id="0AU-0L-oGA"/>
+                            <outlet property="delegate" destination="d35-tO-Ina" id="xCd-D4-6if"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBb-0W-hXK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="565" y="219"/>
         </scene>
         <!--Book View Controller-->
         <scene sceneID="QlZ-Om-osv">
@@ -154,6 +172,8 @@
                         <outlet property="authorsLabel" destination="w3m-CQ-pBL" id="PMU-B5-oeh"/>
                         <outlet property="coverImageView" destination="pMJ-DE-Wvn" id="rZv-jA-GhA"/>
                         <outlet property="descriptionLabel" destination="OZK-Ku-NhA" id="nyS-B5-Mbv"/>
+                        <outlet property="readBarButtonItem" destination="eRo-cT-7D7" id="ict-Te-NZh"/>
+                        <outlet property="shelfBarButtonItem" destination="f1V-UN-zvO" id="pDK-wd-YTV"/>
                         <outlet property="titleLabel" destination="Ak1-R7-QU7" id="bFZ-8E-kV1"/>
                     </connections>
                 </viewController>

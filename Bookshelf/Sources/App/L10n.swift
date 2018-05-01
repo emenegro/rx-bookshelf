@@ -9,8 +9,12 @@
 import Foundation
 
 enum L10n: String {
+    case add
     case addBook = "add_book"
     case detail
+    case markRead = "mark_read"
+    case markUnread = "mark_unread"
+    case remove
 }
 
 extension L10n: Localizable {

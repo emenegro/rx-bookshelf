@@ -11,20 +11,27 @@ import RxSwift
 import RxCocoa
 
 class BookViewController: UIViewController {
-    static let storyboardId = "BookViewController"
     private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var shelfBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var readBarButtonItem: UIBarButtonItem!
     var bookViewModel: BookViewModel!
 }
 
 extension BookViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = L10n.detail.localized
+        setupView()
         bindViewModel()
+    }
+}
+
+private extension BookViewController {
+    func setupView() {
+        title = L10n.detail.localized
     }
 }
 
@@ -32,10 +39,11 @@ private extension BookViewController {
     func bindViewModel() {
         bookViewModel.book
             .asDriver()
-            .drive(onNext: {
-                self.populate(with: $0)
-            })
+            .drive(onNext: { self.populate(with: $0) })
             .disposed(by: disposeBag)
+        
+        bookViewModel.set(toggleInShelfTrigger: shelfBarButtonItem.rx.tap.asObservable())
+        bookViewModel.set(toggleReadTrigger: readBarButtonItem.rx.tap.asObservable())
     }
 }
 
@@ -48,5 +56,8 @@ private extension BookViewController {
         titleLabel.text = book.title
         authorsLabel.text = book.authorsString
         descriptionLabel.text = book.description
+        shelfBarButtonItem.title = book.isInShelf ? L10n.remove.localized : L10n.add.localized
+        readBarButtonItem.title = book.isRead ? L10n.markUnread.localized : L10n.markRead.localized
+        readBarButtonItem.isEnabled = book.isInShelf
     }
 }

@@ -40,9 +40,17 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xt-6P-BqU">
+                    <rect key="frame" x="0.0" y="79" width="320" height="1"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="wD5-Gl-cZt"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="5xt-6P-BqU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="04w-B2-qnq"/>
                 <constraint firstItem="PWl-xW-Etm" firstAttribute="leading" secondItem="iic-Co-Fid" secondAttribute="trailing" constant="5" id="ASP-zz-ZQx"/>
                 <constraint firstItem="rzt-jh-XXC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="DcZ-td-Y07"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iic-Co-Fid" secondAttribute="bottom" id="Lsf-98-oGv"/>
@@ -52,8 +60,10 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PWl-xW-Etm" secondAttribute="trailing" constant="5" id="Z0r-ik-2tx"/>
                 <constraint firstItem="iic-Co-Fid" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="eWV-Tf-l1O"/>
                 <constraint firstItem="rzt-jh-XXC" firstAttribute="leading" secondItem="iic-Co-Fid" secondAttribute="trailing" constant="5" id="hdq-Sr-1gL"/>
+                <constraint firstAttribute="bottom" secondItem="5xt-6P-BqU" secondAttribute="bottom" id="iRo-xz-4E8"/>
+                <constraint firstAttribute="trailing" secondItem="5xt-6P-BqU" secondAttribute="trailing" id="j46-94-nLr"/>
                 <constraint firstItem="PWl-xW-Etm" firstAttribute="top" secondItem="rzt-jh-XXC" secondAttribute="bottom" constant="2" id="rhe-es-eKp"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PWl-xW-Etm" secondAttribute="bottom" id="xhe-AH-CXh"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="PWl-xW-Etm" secondAttribute="bottom" constant="5" id="xhe-AH-CXh"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>

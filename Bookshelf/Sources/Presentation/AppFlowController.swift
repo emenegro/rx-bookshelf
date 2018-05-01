@@ -15,7 +15,7 @@ protocol AppFlowController {
 
 class BookshelfFlowNavigationController: UINavigationController, AppFlowController {
     private var searchResultsViewController: SearchResultsViewController {
-        let searchResultsViewController = SearchResultsViewController(style: .plain)
+        let searchResultsViewController = SearchResultsViewController.createFromStoryboard()
         ServiceLocator.injectDependencies(to: searchResultsViewController)
         searchResultsViewController.flowViewController = self
         return searchResultsViewController
@@ -31,9 +31,7 @@ class BookshelfFlowNavigationController: UINavigationController, AppFlowControll
     }
     
     func showDetailOf(book: Book) {
-        guard let bookViewController = storyboard?.instantiateViewController(withIdentifier: BookViewController.storyboardId) as? BookViewController else {
-            fatalError("BookViewController not found in Main.storyboard")
-        }
+        let bookViewController = BookViewController.createFromStoryboard()
         ServiceLocator.injectDependencies(to: bookViewController, using: book)
         show(bookViewController, sender: self)
     }

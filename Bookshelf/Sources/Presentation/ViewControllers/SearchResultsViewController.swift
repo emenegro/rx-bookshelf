@@ -19,35 +19,38 @@ class SearchResultsViewController: UITableViewController {
 extension SearchResultsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableView()
-        setupTableViewBindings()
+        setupView()
         bindViewModel()
     }
 }
 
 private extension SearchResultsViewController {
-    func setupTableView() {
-        tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.reuseIdentifier)
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.separatorInset = UIEdgeInsets.zero
+    func setupView() {
+        setupTableView()
     }
     
-    func setupTableViewBindings() {
-        tableView.rx.modelSelected(Book.self)
-            .subscribe(onNext: { [flowViewController] in
-                flowViewController?.showDetailOf(book: $0)
-            }).disposed(by: disposeBag)
+    func setupTableView() {
+        tableView.dataSource = nil
+        tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.reuseIdentifier)
     }
 }
 
 private extension SearchResultsViewController {
     func bindViewModel() {
-        tableView.dataSource = nil
+        bindTableView()
+    }
+    
+    func bindTableView() {
         searchViewModel.results
             .drive(tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
             }
             .disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Book.self)
+            .subscribe(onNext: { [flowViewController] in
+                flowViewController?.showDetailOf(book: $0)
+            }).disposed(by: disposeBag)
     }
 }
 

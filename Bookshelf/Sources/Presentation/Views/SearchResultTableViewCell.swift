@@ -14,10 +14,7 @@ class SearchResultTableViewCell: UITableViewCell {
     private let bookView: BookInListView
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        guard let bookInListView = Bundle.main.loadNibNamed(BookInListView.nibName, owner: nil, options: nil)?.first as? BookInListView else{
-            fatalError("Cannot load XIB for BookInListView")
-        }
-        bookView = bookInListView
+        bookView = BookInListView.createFromNib()
         bookView.translatesAutoresizingMaskIntoConstraints = false
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

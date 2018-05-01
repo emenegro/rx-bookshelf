@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EmptyStateView" customModule="Bookshelf" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_keyboard_arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="2f3-50-VrC">
+                    <rect key="frame" x="116" y="10" width="48" height="48"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUI-tB-Jme">
+                    <rect key="frame" x="10" y="68" width="260" height="122"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="empty_shelf"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XUI-tB-Jme" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="HAW-pn-fmk"/>
+                <constraint firstItem="2f3-50-VrC" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IBf-hD-GdH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XUI-tB-Jme" secondAttribute="bottom" constant="10" id="RLs-0m-tW7"/>
+                <constraint firstItem="XUI-tB-Jme" firstAttribute="top" secondItem="2f3-50-VrC" secondAttribute="bottom" constant="10" id="Sb1-Wd-TNk"/>
+                <constraint firstItem="2f3-50-VrC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gUA-BP-7mY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XUI-tB-Jme" secondAttribute="trailing" constant="10" id="xlJ-L6-Uk2"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-81" y="40"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_keyboard_arrow_up" width="48" height="48"/>
+    </resources>
+</document>

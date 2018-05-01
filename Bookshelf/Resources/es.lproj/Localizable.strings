@@ -9,3 +9,8 @@
 "bookshelf" = "Librería";
 "detail" = "Detalle";
 "add_book" = "Añadir libro";
+"add" = "Añadir";
+"remove" = "Quitar";
+"mark_read" = "Marcar como leído";
+"mark_unread" = "Marcar como no leído";
+"empty_shelf" = "No tienes libros en tu librería.\nAñade uno buscando arriba.";

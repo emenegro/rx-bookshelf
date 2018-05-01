@@ -23,6 +23,10 @@ struct Book: Codable {
         return authors.joined(separator: ", ")
     }
     
+    var isInShelf: Bool {
+        return !id.isEmpty // Id is only populated when added to shelf
+    }
+    
     private enum CodingKeys: String, CodingKey {
         case id = "_id"
         case title, authors, description, publisher, publishedDate, coverImageUrl, isRead
@@ -38,5 +42,16 @@ struct Book: Codable {
         publishedDate = try container.decodeIfPresent(String.self, forKey: .publishedDate) ?? ""
         coverImageUrl = try container.decodeIfPresent(URL.self, forKey: .coverImageUrl) ?? nil
         isRead = try container.decodeIfPresent(Bool.self, forKey: .isRead) ?? false
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(title, forKey: .title)
+        try container.encode(authors, forKey: .authors)
+        try container.encode(description, forKey: .description)
+        try container.encode(publisher, forKey: .publisher)
+        try container.encode(publishedDate, forKey: .publishedDate)
+        try container.encode(coverImageUrl, forKey: .coverImageUrl)
+        try container.encode(isRead, forKey: .isRead)
     }
 }

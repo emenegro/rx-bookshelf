@@ -13,6 +13,7 @@ import RxCocoa
 class ListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
+    var emptyStateView: EmptyStateView!
     var refreshControl: UIRefreshControl!
     var booksViewModel: BooksViewModel!
     var searchResultsViewController: SearchResultsViewController!
@@ -29,19 +30,19 @@ class ListViewController: UIViewController {
 extension ListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigation()
-        setupTableView()
-        setupPullToRefresh()
+        setupView()
         bindViewModel()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        booksViewModel.getList.onNext(())
     }
 }
 
 private extension ListViewController {
+    func setupView() {
+        setupNavigation()
+        setupTableView()
+        setupPullToRefresh()
+        setupEmptyStateView()
+    }
+    
     func setupNavigation() {
         definesPresentationContext = true
         navigationItem.hidesSearchBarWhenScrolling = false
@@ -49,18 +50,23 @@ private extension ListViewController {
     }
     
     func setupTableView() {
+        tableView.dataSource = nil // To not interfere with Rx
         tableView.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.reuseIdentifier)
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.separatorInset = UIEdgeInsets.zero
     }
     
     func setupPullToRefresh() {
         refreshControl = UIRefreshControl()
-        tableView.addSubview(refreshControl)
-        refreshControl.rx.controlEvent(.valueChanged)
-            .filter({ self.refreshControl.isRefreshing })
-            .bind(to: booksViewModel.getList)
-            .disposed(by: disposeBag)
+        tableView.refreshControl = refreshControl
+    }
+    
+    func setupEmptyStateView() {
+        emptyStateView = EmptyStateView.createFromNib()
+        emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.addSubview(emptyStateView)
+        NSLayoutConstraint.activate([
+            emptyStateView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: kEmptyStateViewTopMargin),
+            emptyStateView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
+        ])
     }
 }
 
@@ -69,10 +75,16 @@ private extension ListViewController {
         bindTableView()
     }
     
-    private func bindTableView() {
-        tableView.dataSource = nil
-        booksViewModel.list
-            .do(onNext: { _ in self.refreshControl.endRefreshing() })
+    func bindTableView() {
+        let viewWillAppearObservable = rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).map({ _ in () })
+        let refreshObservable = refreshControl.rx.controlEvent(.valueChanged).asObservable()
+        let getListObservable = Observable.of(viewWillAppearObservable, refreshObservable).merge()
+
+        booksViewModel.set(getListTrigger: getListObservable)
+            .do(onNext: { [refreshControl, emptyStateView] list in
+                refreshControl?.endRefreshing()
+                emptyStateView?.isHidden = !list.isEmpty
+            })
             .drive(tableView.rx.items(cellIdentifier: BookTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
             }
@@ -84,3 +96,5 @@ private extension ListViewController {
             }).disposed(by: disposeBag)
     }
 }
+
+private let kEmptyStateViewTopMargin: CGFloat = 30

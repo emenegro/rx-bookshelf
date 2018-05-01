@@ -10,12 +10,12 @@ import UIKit
 
 final class ServiceLocator {
     private static var networkSession = URLSession.shared
+    private static var booksService = BooksServiceImpl(networkSession: networkSession)
     private static var searchViewModel: SearchViewModel {
         let searchService = SearchServiceImpl(networkSession: networkSession)
         return SearchViewModelImpl(searchService: searchService)
     }
     private static var booksViewModel: BooksViewModel {
-        let booksService = BooksServiceImpl(networkSession: networkSession)
         return BooksViewModelImpl(booksService: booksService)
     }
     
@@ -35,7 +35,7 @@ final class ServiceLocator {
     }
     
     static func injectDependencies(to bookViewController: BookViewController, using book: Book) {
-        let viewModel = BookViewModelImpl(book: book)
+        let viewModel = BookViewModelImpl(book: book, booksService: booksService)
         bookViewController.bookViewModel = viewModel
     }
 }

@@ -63,7 +63,7 @@ extension BooksServiceImpl: BooksService {
                 var request = URLRequest(url: $0)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "put"
-                request.httpBody = try JSONEncoder().encode(isRead)
+                request.httpBody = try JSONSerialization.data(withJSONObject: ["isRead": isRead], options: [])
                 return request
             })
             .execute(in: networkSession)
