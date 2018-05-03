@@ -26,7 +26,6 @@ struct SearchViewModelImpl: SearchViewModel {
             .filter({ !$0.isEmpty })
             .distinctUntilChanged()
             .flatMapLatest({ searchService.search(query: $0) })
-            .startWith([])
             .asDriver(onErrorJustReturn: [])
     }
 }

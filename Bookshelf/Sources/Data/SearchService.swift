@@ -38,5 +38,6 @@ extension SearchServiceImpl: SearchService {
             .map({ URLRequest(url: $0) })
             .execute(in: networkSession)
             .mapBooks()
+            .startWith([])
     }
 }

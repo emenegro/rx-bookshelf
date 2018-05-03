@@ -53,11 +53,13 @@
                         <viewLayoutGuide key="safeArea" id="c9b-lK-NbP"/>
                     </view>
                     <navigationItem key="navigationItem" id="3Wb-cN-8SQ">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="NAJ-6B-UEg"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="bookshelf"/>
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
+                        <outlet property="editBarButtonItem" destination="NAJ-6B-UEg" id="GDO-uG-y2C"/>
                         <outlet property="tableView" destination="WrV-b6-obg" id="TYk-dk-yS7"/>
                     </connections>
                 </viewController>

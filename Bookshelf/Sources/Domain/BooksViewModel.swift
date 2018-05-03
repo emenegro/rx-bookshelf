@@ -11,6 +11,7 @@ import RxCocoa
 
 protocol BooksViewModel {
     func set(getListTrigger: Observable<Void>) -> Driver<[Book]>
+    func set(deleteTrigger: Observable<Book>) -> Observable<[Book]>
 }
 
 struct BooksViewModelImpl {
@@ -28,6 +29,12 @@ extension BooksViewModelImpl: BooksViewModel {
             .flatMap({ self.booksService.list() })
             .startWith([])
             .asDriver(onErrorJustReturn: [])
+    }
+    
+    func set(deleteTrigger: Observable<Book>) -> Observable<[Book]> {
+        return deleteTrigger
+            .flatMap({ self.booksService.delete(book: $0) })
+            .flatMap({ _ in self.booksService.list() })
     }
 }
 

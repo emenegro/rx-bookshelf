@@ -13,6 +13,7 @@ import RxCocoa
 class ListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     var emptyStateView: EmptyStateView!
     var refreshControl: UIRefreshControl!
     var booksViewModel: BooksViewModel!
@@ -41,6 +42,7 @@ private extension ListViewController {
         setupTableView()
         setupPullToRefresh()
         setupEmptyStateView()
+        setupEditBarButtonItem()
     }
     
     func setupNavigation() {
@@ -68,6 +70,21 @@ private extension ListViewController {
             emptyStateView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
         ])
     }
+    
+    func setupEditBarButtonItem() {
+        editBarButtonItem.rx.tap.asObservable()
+            .subscribe(onNext: { _ in
+                self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.methodInvoked(#selector(setEditing(_:animated:)))
+            .startWith([])
+            .subscribe(onNext: { _ in
+                self.editBarButtonItem.title = self.tableView.isEditing ? L10n.accept.localized : L10n.edit.localized
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 private extension ListViewController {
@@ -78,8 +95,9 @@ private extension ListViewController {
     func bindTableView() {
         let viewWillAppearObservable = rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).map({ _ in () })
         let refreshObservable = refreshControl.rx.controlEvent(.valueChanged).asObservable()
-        let getListObservable = Observable.of(viewWillAppearObservable, refreshObservable).merge()
-
+        let deleteObservable = booksViewModel.set(deleteTrigger: tableView.rx.modelDeleted(Book.self).asObservable()).map({ _ in () })
+        let getListObservable = Observable.of(viewWillAppearObservable, refreshObservable, deleteObservable).merge()
+        
         booksViewModel.set(getListTrigger: getListObservable)
             .do(onNext: { [refreshControl, emptyStateView] list in
                 refreshControl?.endRefreshing()

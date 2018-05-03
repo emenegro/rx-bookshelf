@@ -14,3 +14,5 @@
 "mark_read" = "Marcar como leído";
 "mark_unread" = "Marcar como no leído";
 "empty_shelf" = "No tienes libros en tu librería.\nAñade uno buscando arriba.";
+"edit" = "Editar";
+"accept" = "Aceptar";

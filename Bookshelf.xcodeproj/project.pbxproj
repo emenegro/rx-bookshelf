@@ -35,12 +35,11 @@
 		3A33B32C2091D0120059A34E /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33B32B2091D0120059A34E /* Localizable.swift */; };
 		3A33B32F2091D03F0059A34E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A33B3312091D03F0059A34E /* Localizable.strings */; };
 		3A69EC38208F854B002D00E8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC35208F854B002D00E8 /* RxSwift.framework */; };
-		3A69EC39208F854B002D00E8 /* RxGesture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC36208F854B002D00E8 /* RxGesture.framework */; };
-		3A69EC3A208F854B002D00E8 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC37208F854B002D00E8 /* RxCocoa.framework */; };
 		3A69EC4920907858002D00E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A69EC4020907857002D00E8 /* Assets.xcassets */; };
 		3A69EC4A20907858002D00E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A69EC4120907857002D00E8 /* LaunchScreen.storyboard */; };
 		3A69EC4B20907858002D00E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A69EC4320907857002D00E8 /* Main.storyboard */; };
 		3A69EC4F20907886002D00E8 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A69EC4E20907886002D00E8 /* Book.swift */; };
+		3A8400DE209B002400B1FEFA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC37208F854B002D00E8 /* RxCocoa.framework */; };
 		3A9F3BF22092659D00E38A59 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF12092659D00E38A59 /* AppFlowController.swift */; };
 		3A9F3BFA209363D800E38A59 /* BooksMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF9209363D800E38A59 /* BooksMapper.swift */; };
 		3AD2F5162091D5CB00E96A4A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */; };
@@ -78,12 +77,13 @@
 		3A33B3302091D03F0059A34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A33B3322091D05B0059A34E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A69EC35208F854B002D00E8 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
-		3A69EC36208F854B002D00E8 /* RxGesture.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxGesture.framework; path = Carthage/Build/iOS/RxGesture.framework; sourceTree = "<group>"; };
 		3A69EC37208F854B002D00E8 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		3A69EC4020907857002D00E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A69EC4220907857002D00E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A69EC4420907857002D00E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A69EC4E20907886002D00E8 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
+		3A8400E3209B07A900B1FEFA /* RxDataSources.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxDataSources.framework; path = Carthage/Build/iOS/RxDataSources.framework; sourceTree = "<group>"; };
+		3A8400E6209B10C000B1FEFA /* Differentiator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Differentiator.framework; path = Carthage/Build/iOS/Differentiator.framework; sourceTree = "<group>"; };
 		3A9F3BF12092659D00E38A59 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		3A9F3BF9209363D800E38A59 /* BooksMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMapper.swift; sourceTree = "<group>"; };
 		3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -94,9 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A8400DE209B002400B1FEFA /* RxCocoa.framework in Frameworks */,
 				3A69EC38208F854B002D00E8 /* RxSwift.framework in Frameworks */,
-				3A69EC39208F854B002D00E8 /* RxGesture.framework in Frameworks */,
-				3A69EC3A208F854B002D00E8 /* RxCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,8 +192,9 @@
 		3A69EC34208F854B002D00E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A8400E6209B10C000B1FEFA /* Differentiator.framework */,
+				3A8400E3209B07A900B1FEFA /* RxDataSources.framework */,
 				3A69EC37208F854B002D00E8 /* RxCocoa.framework */,
-				3A69EC36208F854B002D00E8 /* RxGesture.framework */,
 				3A69EC35208F854B002D00E8 /* RxSwift.framework */,
 			);
 			name = Frameworks;
@@ -325,13 +325,11 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxGesture.framework",
 			);
 			name = "Copy Carthage frameworks";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxGesture.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

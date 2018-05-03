@@ -9,9 +9,11 @@
 import Foundation
 
 enum L10n: String {
+    case accept
     case add
     case addBook = "add_book"
     case detail
+    case edit
     case markRead = "mark_read"
     case markUnread = "mark_unread"
     case remove

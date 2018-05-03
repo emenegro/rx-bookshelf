@@ -14,3 +14,5 @@
 "mark_read" = "Mark read";
 "mark_unread" = "Mark unread";
 "empty_shelf" = "You don't have books in your shelf.\nAdd one searching above.";
+"edit" = "Edit";
+"accept" = "Accept";
