@@ -14,7 +14,6 @@ class BookViewController: UIViewController {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var readImageView: UIImageView!
     @IBOutlet weak var authorsLabel: UILabel!
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var publishedDateLabel: UILabel!
@@ -77,12 +76,11 @@ private extension BookViewController {
         publisherLabel.text = book.publisher
         publishedDateLabel.text = book.publishedDate
         descriptionLabel.text = book.description
-        readImageView.isHidden = !book.isRead
         markReadBarButtonItem.isEnabled = book.isInShelf
-        setBarButtonItems(for: book)
+        setToolbarItems(for: book)
     }
     
-    func setBarButtonItems(for book: Book) {
+    func setToolbarItems(for book: Book) {
         var items = [UIBarButtonItem]()
         
         if book.isInShelf {

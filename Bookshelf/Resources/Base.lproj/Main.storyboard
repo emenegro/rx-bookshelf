@@ -118,24 +118,12 @@
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8nS-Gw-Xda">
                                                         <rect key="frame" x="0.0" y="165" width="375" height="138"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QuB-LO-Zmf">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak1-R7-QU7">
                                                                 <rect key="frame" x="10" y="10" width="355" height="25.5"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ak1-R7-QU7">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="329" height="25.5"/>
-                                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_check_circle" translatesAutoresizingMaskIntoConstraints="NO" id="oWo-bo-bfs">
-                                                                        <rect key="frame" x="329" y="0.0" width="26" height="25.5"/>
-                                                                        <constraints>
-                                                                            <constraint firstAttribute="width" constant="26" id="MSI-jl-0vm"/>
-                                                                            <constraint firstAttribute="height" constant="26" id="pCf-L5-8hj"/>
-                                                                        </constraints>
-                                                                    </imageView>
-                                                                </subviews>
-                                                            </stackView>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3m-CQ-pBL">
                                                                 <rect key="frame" x="10" y="45.5" width="355" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -226,7 +214,6 @@
                         <outlet property="markUnreadBarButtonItem" destination="eRo-cT-7D7" id="jHg-8S-71c"/>
                         <outlet property="publishedDateLabel" destination="8re-iH-ttg" id="GCz-BX-7ue"/>
                         <outlet property="publisherLabel" destination="Dm2-oR-8Fv" id="6Gd-bw-wDR"/>
-                        <outlet property="readImageView" destination="oWo-bo-bfs" id="oYw-4L-UHV"/>
                         <outlet property="removeBarButtonItem" destination="lxk-Zv-1FE" id="Otg-gm-Lda"/>
                         <outlet property="titleLabel" destination="Ak1-R7-QU7" id="bFZ-8E-kV1"/>
                         <outlet property="toolbar" destination="htM-zP-8g3" id="QIy-MB-xf0"/>
@@ -237,7 +224,4 @@
             <point key="canvasLocation" x="1294" y="-443"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ic_check_circle" width="24" height="24"/>
-    </resources>
 </document>
