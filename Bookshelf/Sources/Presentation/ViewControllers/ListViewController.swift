@@ -106,9 +106,10 @@ private extension ListViewController {
         
         Observable.of(listViewModel.list, listViewModel.deleteResult).merge()
             .asDriver(onErrorJustReturn: [])
-            .do(onNext: { [refreshControl, emptyStateView] list in
+            .do(onNext: { [refreshControl, emptyStateView, editBarButtonItem] list in
                 refreshControl?.endRefreshing()
                 emptyStateView?.isHidden = !list.isEmpty
+                editBarButtonItem?.isEnabled = !list.isEmpty
             })
             .drive(tableView.rx.items(cellIdentifier: BookTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
