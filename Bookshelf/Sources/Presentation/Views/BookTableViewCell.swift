@@ -35,4 +35,4 @@ class BookTableViewCell: SearchResultTableViewCell {
     }
 }
 
-private let kCheckIconMargin: CGFloat = 5
+private let kCheckIconMargin: CGFloat = 10

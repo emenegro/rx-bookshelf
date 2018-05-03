@@ -20,7 +20,7 @@ class SearchResultTableViewCell: UITableViewCell {
         
         contentView.addSubview(bookView)
         NSLayoutConstraint.activate([
-            bookView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            bookView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: kContentLeftMargin),
             bookView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             bookView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             bookView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -39,3 +39,5 @@ class SearchResultTableViewCell: UITableViewCell {
         bookView.prepareForReuse()
     }
 }
+
+private let kContentLeftMargin: CGFloat = 10
