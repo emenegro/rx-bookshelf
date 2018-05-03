@@ -15,8 +15,8 @@ final class ServiceLocator {
         let searchService = SearchServiceImpl(networkSession: networkSession)
         return SearchViewModelImpl(searchService: searchService)
     }
-    private static var booksViewModel: BooksViewModel {
-        return BooksViewModelImpl(booksService: booksService)
+    private static var listViewModel: ListViewModel {
+        return ListViewModelImpl(booksService: booksService)
     }
     
     static func injectInitialDependencies(window: UIWindow?) {
@@ -27,7 +27,7 @@ final class ServiceLocator {
     }
     
     static func injectDependencies(to listViewController: ListViewController) {
-        listViewController.booksViewModel = booksViewModel
+        listViewController.listViewModel = listViewModel
     }
     
     static func injectDependencies(to searchResultsViewController: SearchResultsViewController) {

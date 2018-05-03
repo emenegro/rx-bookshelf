@@ -19,8 +19,11 @@ class BookViewController: UIViewController {
     @IBOutlet weak var publisherLabel: UILabel!
     @IBOutlet weak var publishedDateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var shelfBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var readBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var toolbar: UIToolbar!
+    @IBOutlet var addBarButtonItem: UIBarButtonItem!
+    @IBOutlet var removeBarButtonItem: UIBarButtonItem!
+    @IBOutlet var markReadBarButtonItem: UIBarButtonItem!
+    @IBOutlet var markUnreadBarButtonItem: UIBarButtonItem!
     var bookViewModel: BookViewModel!
 }
 
@@ -41,12 +44,25 @@ private extension BookViewController {
 private extension BookViewController {
     func bindViewModel() {
         bookViewModel.book
-            .asDriver()
-            .drive(onNext: { self.populate(with: $0) })
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: { self.populate(with: $0) })
             .disposed(by: disposeBag)
         
-        bookViewModel.set(toggleInShelfTrigger: shelfBarButtonItem.rx.tap.asObservable())
-        bookViewModel.set(toggleReadTrigger: readBarButtonItem.rx.tap.asObservable())
+        addBarButtonItem.rx.tap.asObservable()
+            .bind(to: bookViewModel.addBook)
+            .disposed(by: disposeBag)
+        
+        removeBarButtonItem.rx.tap.asObservable()
+            .bind(to: bookViewModel.removeBook)
+            .disposed(by: disposeBag)
+        
+        markReadBarButtonItem.rx.tap.asObservable()
+            .bind(to: bookViewModel.markRead)
+            .disposed(by: disposeBag)
+        
+        markUnreadBarButtonItem.rx.tap.asObservable()
+            .bind(to: bookViewModel.markUnread)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -61,9 +77,28 @@ private extension BookViewController {
         publisherLabel.text = book.publisher
         publishedDateLabel.text = book.publishedDate
         descriptionLabel.text = book.description
-        shelfBarButtonItem.title = book.isInShelf ? L10n.remove.localized : L10n.add.localized
-        readBarButtonItem.title = book.isRead ? L10n.markUnread.localized : L10n.markRead.localized
         readImageView.isHidden = !book.isRead
-        readBarButtonItem.isEnabled = book.isInShelf
+        markReadBarButtonItem.isEnabled = book.isInShelf
+        setBarButtonItems(for: book)
+    }
+    
+    func setBarButtonItems(for book: Book) {
+        var items = [UIBarButtonItem]()
+        
+        if book.isInShelf {
+            items.append(removeBarButtonItem)
+        } else {
+            items.append(addBarButtonItem)
+        }
+        
+        items.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
+        
+        if book.isRead {
+            items.append(markUnreadBarButtonItem)
+        } else {
+            items.append(markReadBarButtonItem)
+        }
+        
+        toolbar.setItems(items, animated: false)
     }
 }

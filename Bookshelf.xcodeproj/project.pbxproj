@@ -15,7 +15,7 @@
 		3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708B209390F4006B6166 /* BookViewModel.swift */; };
 		3A33708E209398F4006B6166 /* URL+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708D209398F4006B6166 /* URL+Rx.swift */; };
 		3A33709020939DD9006B6166 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708F20939DD9006B6166 /* L10n.swift */; };
-		3A3370922097055F006B6166 /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3370912097055F006B6166 /* BooksViewModel.swift */; };
+		3A3370922097055F006B6166 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3370912097055F006B6166 /* ListViewModel.swift */; };
 		3A33709B20970BC1006B6166 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33709520970BC1006B6166 /* SearchResultTableViewCell.swift */; };
 		3A33709C20970BC1006B6166 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33709720970BC1006B6166 /* SearchResultsViewController.swift */; };
 		3A33709D20970BC1006B6166 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33709820970BC1006B6166 /* ListViewController.swift */; };
@@ -56,7 +56,7 @@
 		3A33708B209390F4006B6166 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		3A33708D209398F4006B6166 /* URL+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Rx.swift"; sourceTree = "<group>"; };
 		3A33708F20939DD9006B6166 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
-		3A3370912097055F006B6166 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		3A3370912097055F006B6166 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		3A33709520970BC1006B6166 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		3A33709720970BC1006B6166 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
 		3A33709820970BC1006B6166 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
@@ -237,8 +237,8 @@
 		3AD2F5142091D5B900E96A4A /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				3A3370912097055F006B6166 /* BooksViewModel.swift */,
 				3A33708B209390F4006B6166 /* BookViewModel.swift */,
+				3A3370912097055F006B6166 /* ListViewModel.swift */,
 				3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */,
 			);
 			path = Domain;
@@ -366,7 +366,7 @@
 				3A3370AE20973EC1006B6166 /* URLSession+Rx.swift in Sources */,
 				3A33709D20970BC1006B6166 /* ListViewController.swift in Sources */,
 				3A9F3BF22092659D00E38A59 /* AppFlowController.swift in Sources */,
-				3A3370922097055F006B6166 /* BooksViewModel.swift in Sources */,
+				3A3370922097055F006B6166 /* ListViewModel.swift in Sources */,
 				3A25CEC820936FDC009C0C15 /* AppDelegate.swift in Sources */,
 				3A33709C20970BC1006B6166 /* SearchResultsViewController.swift in Sources */,
 			);

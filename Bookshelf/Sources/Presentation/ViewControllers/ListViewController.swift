@@ -16,7 +16,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
     var emptyStateView: EmptyStateView!
     var refreshControl: UIRefreshControl!
-    var booksViewModel: BooksViewModel!
+    var listViewModel: ListViewModel!
     var searchResultsViewController: SearchResultsViewController!
     var flowViewController: BookshelfFlowNavigationController!
     
@@ -97,14 +97,14 @@ private extension ListViewController {
         let viewWillAppearObservable = rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).map({ _ in () })
         let refreshObservable = refreshControl.rx.controlEvent(.valueChanged).asObservable()
         Observable.of(viewWillAppearObservable, refreshObservable).merge()
-            .bind(to: booksViewModel.getList)
+            .bind(to: listViewModel.getList)
             .disposed(by: disposeBag)
         
         tableView.rx.modelDeleted(Book.self)
-            .bind(to: booksViewModel.deleteBook)
+            .bind(to: listViewModel.deleteBook)
             .disposed(by: disposeBag)
         
-        Observable.of(booksViewModel.list, booksViewModel.deleteResult).merge()
+        Observable.of(listViewModel.list, listViewModel.deleteResult).merge()
             .asDriver(onErrorJustReturn: [])
             .do(onNext: { [refreshControl, emptyStateView] list in
                 refreshControl?.endRefreshing()

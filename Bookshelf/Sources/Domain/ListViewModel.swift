@@ -9,18 +9,16 @@
 import RxSwift
 import RxCocoa
 
-protocol BooksViewModel {
+protocol ListViewModel {
     // Inputs
     var getList: PublishSubject<Void> { get }
     var deleteBook: PublishSubject<Book> { get }
     // Outputs
     var list: Driver<[Book]> { get }
     var deleteResult: Driver<[Book]> { get }
-//    func set(getListTrigger: Observable<Void>) -> Driver<[Book]>
-//    func set(deleteTrigger: Observable<Book>) -> Observable<[Book]>
 }
 
-struct BooksViewModelImpl: BooksViewModel {
+struct ListViewModelImpl: ListViewModel {
     let getList = PublishSubject<Void>()
     let deleteBook = PublishSubject<Book>()
     let list: Driver<[Book]>
@@ -39,21 +37,5 @@ struct BooksViewModelImpl: BooksViewModel {
             .asDriver(onErrorJustReturn: [])
     }
 }
-
-//extension BooksViewModelImpl: BooksViewModel {
-//    func set(getListTrigger: Observable<Void>) -> Driver<[Book]> {
-//        return getListTrigger
-//            .throttle(kListDelay, scheduler: MainScheduler.instance)
-//            .flatMap({ self.booksService.list() })
-//            .startWith([])
-//            .asDriver(onErrorJustReturn: [])
-//    }
-//
-//    func set(deleteTrigger: Observable<Book>) -> Observable<[Book]> {
-//        return deleteTrigger
-//            .flatMap({ self.booksService.delete(book: $0) })
-//            .flatMap({ _ in self.booksService.list() })
-//    }
-//}
 
 private let kListDelay: RxTimeInterval = 0.5
