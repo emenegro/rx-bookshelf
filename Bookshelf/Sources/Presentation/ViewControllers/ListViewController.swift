@@ -24,6 +24,7 @@ class ListViewController: UIViewController {
         let searchController = UISearchController(searchResultsController: searchResultsViewController)
         searchController.searchResultsUpdater = searchResultsViewController
         searchController.searchBar.placeholder = L10n.addBook.localized
+        searchController.searchBar.returnKeyType = .done
         return searchController
     }()
 }
@@ -95,10 +96,16 @@ private extension ListViewController {
     func bindTableView() {
         let viewWillAppearObservable = rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).map({ _ in () })
         let refreshObservable = refreshControl.rx.controlEvent(.valueChanged).asObservable()
-        let deleteObservable = booksViewModel.set(deleteTrigger: tableView.rx.modelDeleted(Book.self).asObservable()).map({ _ in () })
-        let getListObservable = Observable.of(viewWillAppearObservable, refreshObservable, deleteObservable).merge()
+        Observable.of(viewWillAppearObservable, refreshObservable).merge()
+            .bind(to: booksViewModel.getList)
+            .disposed(by: disposeBag)
         
-        booksViewModel.set(getListTrigger: getListObservable)
+        tableView.rx.modelDeleted(Book.self)
+            .bind(to: booksViewModel.deleteBook)
+            .disposed(by: disposeBag)
+        
+        Observable.of(booksViewModel.list, booksViewModel.deleteResult).merge()
+            .asDriver(onErrorJustReturn: [])
             .do(onNext: { [refreshControl, emptyStateView] list in
                 refreshControl?.endRefreshing()
                 emptyStateView?.isHidden = !list.isEmpty

@@ -133,9 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				3A25CEC320936FDC009C0C15 /* Configuration.plist */,
+				3A25CEC520936FDC009C0C15 /* Configuration.swift */,
 				3A33708920938BAA006B6166 /* AppAppearance.swift */,
 				3A25CEC420936FDC009C0C15 /* AppDelegate.swift */,
-				3A25CEC520936FDC009C0C15 /* Configuration.swift */,
 				3A33708F20939DD9006B6166 /* L10n.swift */,
 				3A3370A7209736BE006B6166 /* R.swift */,
 				3A25CEC220936FDC009C0C15 /* ServiceLocator.swift */,

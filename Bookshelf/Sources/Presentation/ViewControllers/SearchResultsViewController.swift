@@ -56,6 +56,6 @@ private extension SearchResultsViewController {
 
 extension SearchResultsViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        searchViewModel.query.value = searchController.searchBar.text ?? ""
+        searchViewModel.query.onNext(searchController.searchBar.text ?? "")
     }
 }
