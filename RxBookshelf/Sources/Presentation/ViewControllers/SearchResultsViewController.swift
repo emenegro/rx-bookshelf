@@ -60,7 +60,8 @@ private extension SearchResultsViewController {
         tableView.rx.modelSelected(Book.self)
             .subscribe(onNext: { [flowViewController] in
                 flowViewController?.showDetailOf(book: $0)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
     }
 }
 

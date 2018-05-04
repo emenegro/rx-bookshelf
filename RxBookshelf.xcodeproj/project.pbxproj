@@ -49,7 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A127EA0208F7B2D00561B57 /* Bookshelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bookshelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A127EA0208F7B2D00561B57 /* RxBookshelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxBookshelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A127EB1208F7B2F00561B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A25CEC220936FDC009C0C15 /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
 		3A25CEC320936FDC009C0C15 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		3A127E97208F7B2D00561B57 = {
 			isa = PBXGroup;
 			children = (
-				3A127EA2208F7B2D00561B57 /* Bookshelf */,
+				3A127EA2208F7B2D00561B57 /* RxBookshelf */,
 				3A127EA1208F7B2D00561B57 /* Products */,
 				3A69EC34208F854B002D00E8 /* Frameworks */,
 			);
@@ -120,19 +120,19 @@
 		3A127EA1208F7B2D00561B57 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A127EA0208F7B2D00561B57 /* Bookshelf.app */,
+				3A127EA0208F7B2D00561B57 /* RxBookshelf.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		3A127EA2208F7B2D00561B57 /* Bookshelf */ = {
+		3A127EA2208F7B2D00561B57 /* RxBookshelf */ = {
 			isa = PBXGroup;
 			children = (
 				3A69EC4520907857002D00E8 /* Sources */,
 				3A69EC3F20907857002D00E8 /* Resources */,
 				3A127EB1208F7B2F00561B57 /* Info.plist */,
 			);
-			path = Bookshelf;
+			path = RxBookshelf;
 			sourceTree = "<group>";
 		};
 		3A25CEC120936FDC009C0C15 /* App */ = {
@@ -256,9 +256,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A127E9F208F7B2D00561B57 /* Bookshelf */ = {
+		3A127E9F208F7B2D00561B57 /* RxBookshelf */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A127EB4208F7B2F00561B57 /* Build configuration list for PBXNativeTarget "Bookshelf" */;
+			buildConfigurationList = 3A127EB4208F7B2F00561B57 /* Build configuration list for PBXNativeTarget "RxBookshelf" */;
 			buildPhases = (
 				3A127E9C208F7B2D00561B57 /* Sources */,
 				3A127E9D208F7B2D00561B57 /* Frameworks */,
@@ -269,9 +269,9 @@
 			);
 			dependencies = (
 			);
-			name = Bookshelf;
+			name = RxBookshelf;
 			productName = Bookshelf;
-			productReference = 3A127EA0208F7B2D00561B57 /* Bookshelf.app */;
+			productReference = 3A127EA0208F7B2D00561B57 /* RxBookshelf.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -289,7 +289,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "Bookshelf" */;
+			buildConfigurationList = 3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "RxBookshelfs" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -303,7 +303,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A127E9F208F7B2D00561B57 /* Bookshelf */,
+				3A127E9F208F7B2D00561B57 /* RxBookshelf */,
 			);
 		};
 /* End PBXProject section */
@@ -541,13 +541,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Bookshelf/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxBookshelf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = com.marionegro.Bookshelf;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marionegro.RxBookshelf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -564,12 +564,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Bookshelf/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RxBookshelf/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.marionegro.Bookshelf;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marionegro.RxBookshelf;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -579,7 +579,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "Bookshelf" */ = {
+		3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "RxBookshelfs" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A127EB2208F7B2F00561B57 /* Debug */,
@@ -588,7 +588,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A127EB4208F7B2F00561B57 /* Build configuration list for PBXNativeTarget "Bookshelf" */ = {
+		3A127EB4208F7B2F00561B57 /* Build configuration list for PBXNativeTarget "RxBookshelf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A127EB5208F7B2F00561B57 /* Debug */,

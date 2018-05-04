@@ -107,10 +107,6 @@ private extension ListViewController {
             .bind(to: listViewModel.getList)
             .disposed(by: disposeBag)
         
-        tableView.rx.modelDeleted(Book.self)
-            .bind(to: listViewModel.deleteBook)
-            .disposed(by: disposeBag)
-        
         Observable.of(listViewModel.list, listViewModel.deleteResult).merge()
             .observeOn(MainScheduler.instance)
             .hideActivityIndicator(in: self)
@@ -136,7 +132,12 @@ private extension ListViewController {
         tableView.rx.modelSelected(Book.self)
             .subscribe(onNext: { [flowViewController] in
                 flowViewController?.showDetailOf(book: $0)
-            }).disposed(by: disposeBag)
+            })
+            .disposed(by: disposeBag)
+        
+        tableView.rx.modelDeleted(Book.self)
+            .bind(to: listViewModel.deleteBook)
+            .disposed(by: disposeBag)
     }
 }
 

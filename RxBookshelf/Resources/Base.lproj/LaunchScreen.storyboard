@@ -18,16 +18,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rxbookshelf" translatesAutoresizingMaskIntoConstraints="NO" id="ZRc-IE-fpp">
-                                <rect key="frame" x="87" y="193.5" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="193.5" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="Aqj-UI-fvu"/>
                                     <constraint firstAttribute="width" constant="200" id="IBb-8U-FTN"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RxBookshelf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dq8-gx-R1f">
-                                <rect key="frame" x="99.5" y="403.5" width="176.5" height="36"/>
+                                <rect key="frame" x="99" y="393.5" width="177" height="36"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -35,7 +35,7 @@
                         <constraints>
                             <constraint firstItem="ZRc-IE-fpp" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-50" id="OBD-hK-Occ"/>
                             <constraint firstItem="Dq8-gx-R1f" firstAttribute="centerX" secondItem="ZRc-IE-fpp" secondAttribute="centerX" id="Puo-4w-ehJ"/>
-                            <constraint firstItem="Dq8-gx-R1f" firstAttribute="top" secondItem="ZRc-IE-fpp" secondAttribute="bottom" constant="10" id="bm4-3s-8Ny"/>
+                            <constraint firstItem="Dq8-gx-R1f" firstAttribute="top" secondItem="ZRc-IE-fpp" secondAttribute="bottom" id="bm4-3s-8Ny"/>
                             <constraint firstItem="ZRc-IE-fpp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="plH-Uu-GNZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -43,7 +43,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="376"/>
+            <point key="canvasLocation" x="-511" y="367"/>
         </scene>
     </scenes>
     <resources>
