@@ -67,17 +67,24 @@ private extension BookViewController {
 
 private extension BookViewController {
     func populate(with book: Book) {
-        book.coverImageUrl?.remoteImage
-            .observeOn(MainScheduler.instance)
-            .bind(to: coverImageView.rx.image)
-            .disposed(by: self.disposeBag)
         titleLabel.text = book.title
         authorsLabel.text = book.authorsString
         publisherLabel.text = book.publisher
         publishedDateLabel.text = book.publishedDate
         descriptionLabel.text = book.description
         markReadBarButtonItem.isEnabled = book.isInShelf
+        populateCoverImage(book)
         setToolbarItems(for: book)
+    }
+    
+    func populateCoverImage(_ book: Book) {
+        guard let url = book.coverImageUrl?.absoluteString else { return }
+        DispatchQueue.global().async { [coverImageView] in
+            let image = UIImage(url: url)
+            DispatchQueue.main.async {
+                coverImageView?.image = image
+            }
+        }
     }
     
     func setToolbarItems(for book: Book) {

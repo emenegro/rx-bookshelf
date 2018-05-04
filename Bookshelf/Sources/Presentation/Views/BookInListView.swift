@@ -11,7 +11,6 @@ import RxSwift
 import RxCocoa
 
 class BookInListView: UIView {
-    static let nibName = "BookInListView"
     private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,10 +19,17 @@ class BookInListView: UIView {
     func configure(with book: Book) {
         titleLabel.text = book.title
         authorsLabel.text = book.authorsString
-        book.coverImageUrl?.remoteImage
-            .observeOn(MainScheduler.instance)
-            .bind(to: self.coverImageView.rx.image)
-            .disposed(by: disposeBag)
+        populateCoverImage(book)
+    }
+    
+    func populateCoverImage(_ book: Book) {
+        guard let url = book.coverImageUrl?.absoluteString else { return }
+        DispatchQueue.global().async { [coverImageView] in
+            let image = UIImage(url: url)
+            DispatchQueue.main.async {
+                coverImageView?.image = image
+            }
+        }
     }
     
     func prepareForReuse() {

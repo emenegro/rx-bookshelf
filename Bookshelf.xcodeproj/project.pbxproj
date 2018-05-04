@@ -13,7 +13,6 @@
 		3A25CEC920936FDC009C0C15 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC520936FDC009C0C15 /* Configuration.swift */; };
 		3A33708A20938BAA006B6166 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708920938BAA006B6166 /* AppAppearance.swift */; };
 		3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708B209390F4006B6166 /* BookViewModel.swift */; };
-		3A33708E209398F4006B6166 /* URL+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708D209398F4006B6166 /* URL+Rx.swift */; };
 		3A33709020939DD9006B6166 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708F20939DD9006B6166 /* L10n.swift */; };
 		3A3370922097055F006B6166 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3370912097055F006B6166 /* ListViewModel.swift */; };
 		3A33709B20970BC1006B6166 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33709520970BC1006B6166 /* SearchResultTableViewCell.swift */; };
@@ -43,6 +42,7 @@
 		3A9F3BF22092659D00E38A59 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF12092659D00E38A59 /* AppFlowController.swift */; };
 		3A9F3BFA209363D800E38A59 /* BooksMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF9209363D800E38A59 /* BooksMapper.swift */; };
 		3AD2F5162091D5CB00E96A4A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */; };
+		3AFC643E209C4B67000D1173 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC643D209C4B67000D1173 /* UIImage+URL.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,7 +54,6 @@
 		3A25CEC520936FDC009C0C15 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		3A33708920938BAA006B6166 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		3A33708B209390F4006B6166 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
-		3A33708D209398F4006B6166 /* URL+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Rx.swift"; sourceTree = "<group>"; };
 		3A33708F20939DD9006B6166 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		3A3370912097055F006B6166 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		3A33709520970BC1006B6166 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		3A9F3BF12092659D00E38A59 /* AppFlowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowController.swift; sourceTree = "<group>"; };
 		3A9F3BF9209363D800E38A59 /* BooksMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMapper.swift; sourceTree = "<group>"; };
 		3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		3AFC643D209C4B67000D1173 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,10 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				3A33B32B2091D0120059A34E /* Localizable.swift */,
+				3AFC643D209C4B67000D1173 /* UIImage+URL.swift */,
 				3A3370AB20973E71006B6166 /* UITableViewCell+Utils.swift */,
 				3A3370B120979BDD006B6166 /* UIView+Utils.swift */,
 				3A3370B520986113006B6166 /* UIViewController+Utils.swift */,
-				3A33708D209398F4006B6166 /* URL+Rx.swift */,
 				3A3370AD20973EC1006B6166 /* URLSession+Rx.swift */,
 			);
 			path = Utils;
@@ -345,10 +345,10 @@
 				3A33B3262090AC1D0059A34E /* BooksService.swift in Sources */,
 				3A33709020939DD9006B6166 /* L10n.swift in Sources */,
 				3AD2F5162091D5CB00E96A4A /* SearchViewModel.swift in Sources */,
-				3A33708E209398F4006B6166 /* URL+Rx.swift in Sources */,
 				3A33709E20970BC1006B6166 /* BookViewController.swift in Sources */,
 				3A9F3BFA209363D800E38A59 /* BooksMapper.swift in Sources */,
 				3A33709B20970BC1006B6166 /* SearchResultTableViewCell.swift in Sources */,
+				3AFC643E209C4B67000D1173 /* UIImage+URL.swift in Sources */,
 				3A3370A020970C1A006B6166 /* BookInListView.swift in Sources */,
 				3A3370B220979BDD006B6166 /* UIView+Utils.swift in Sources */,
 				3A25CEC620936FDC009C0C15 /* ServiceLocator.swift in Sources */,
