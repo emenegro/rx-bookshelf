@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BookViewController: UIViewController {
+class BookViewController: UIViewController, ActivityIndicatorHandler {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -44,22 +44,27 @@ private extension BookViewController {
     func bindViewModel() {
         bookViewModel.book
             .observeOn(MainScheduler.instance)
+            .hideActivityIndicator(in: self)
             .subscribe(onNext: { self.populate(with: $0) })
             .disposed(by: disposeBag)
         
         addBarButtonItem.rx.tap.asObservable()
+            .showActivityIndicator(in: self)
             .bind(to: bookViewModel.addBook)
             .disposed(by: disposeBag)
         
         removeBarButtonItem.rx.tap.asObservable()
+            .showActivityIndicator(in: self)
             .bind(to: bookViewModel.removeBook)
             .disposed(by: disposeBag)
         
         markReadBarButtonItem.rx.tap.asObservable()
+            .showActivityIndicator(in: self)
             .bind(to: bookViewModel.markRead)
             .disposed(by: disposeBag)
         
         markUnreadBarButtonItem.rx.tap.asObservable()
+            .showActivityIndicator(in: self)
             .bind(to: bookViewModel.markUnread)
             .disposed(by: disposeBag)
     }
