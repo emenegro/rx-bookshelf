@@ -80,15 +80,15 @@ private extension ListViewController {
     
     func setupEditBarButtonItem() {
         editBarButtonItem.rx.tap.asObservable()
-            .subscribe(onNext: { _ in
-                self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+            .subscribe(onNext: { [tableView] _ in
+                tableView?.setEditing(!(tableView?.isEditing ?? true), animated: true)
             })
             .disposed(by: disposeBag)
         
         tableView.rx.methodInvoked(#selector(setEditing(_:animated:)))
             .startWith([])
-            .subscribe(onNext: { _ in
-                self.editBarButtonItem.title = self.tableView.isEditing ? L10n.accept.localized : L10n.edit.localized
+            .subscribe(onNext: { [editBarButtonItem, tableView]_ in
+                editBarButtonItem?.title = (tableView?.isEditing ?? false) ? L10n.accept.localized : L10n.edit.localized
             })
             .disposed(by: disposeBag)
     }
