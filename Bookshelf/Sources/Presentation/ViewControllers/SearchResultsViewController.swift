@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class SearchResultsViewController: UITableViewController {
+class SearchResultsViewController: UITableViewController, AlertHandler {
     private let disposeBag = DisposeBag()
     var searchViewModel: SearchViewModel!
     var flowViewController: BookshelfFlowNavigationController!
@@ -42,7 +42,17 @@ private extension SearchResultsViewController {
     
     func bindTableView() {
         searchViewModel.results
-            .drive(tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
+            .observeOn(MainScheduler.instance)
+            .map({ [showErrorAlert] result -> [Book] in
+                switch result {
+                case .success(let books):
+                    return books
+                case .error(_):
+                    showErrorAlert(L10n.errorDownloading.localized)
+                    return []
+                }
+            })
+            .bind(to: tableView.rx.items(cellIdentifier: SearchResultTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
             }
             .disposed(by: disposeBag)

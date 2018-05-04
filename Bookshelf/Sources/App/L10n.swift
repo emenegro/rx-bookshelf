@@ -14,6 +14,9 @@ enum L10n: String {
     case addBook = "add_book"
     case detail
     case edit
+    case error
+    case errorDownloading = "error_downloading"
+    case errorExecutingOperation = "error_executing_operation"
     case markRead = "mark_read"
     case markUnread = "mark_unread"
     case remove

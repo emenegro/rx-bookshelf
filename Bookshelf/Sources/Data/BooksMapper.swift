@@ -35,5 +35,4 @@ extension ObservableType where E == Data {
             }
         })
     }
-
 }

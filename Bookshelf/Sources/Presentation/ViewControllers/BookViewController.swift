@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class BookViewController: UIViewController, ActivityIndicatorHandler {
+class BookViewController: UIViewController, ActivityIndicatorHandler, AlertHandler {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -45,7 +45,14 @@ private extension BookViewController {
         bookViewModel.book
             .observeOn(MainScheduler.instance)
             .hideActivityIndicator(in: self)
-            .subscribe(onNext: { self.populate(with: $0) })
+            .subscribe(onNext: { [showErrorAlert, populate] result in
+                switch result {
+                case .success(let book):
+                    populate(book)
+                case .error(_):
+                    showErrorAlert(L10n.errorExecutingOperation.localized)
+                }
+            })
             .disposed(by: disposeBag)
         
         addBarButtonItem.rx.tap.asObservable()

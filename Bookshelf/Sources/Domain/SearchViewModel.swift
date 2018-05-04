@@ -13,20 +13,19 @@ protocol SearchViewModel {
     // Inputs
     var query: PublishSubject<String> { get }
     // Outputs
-    var results: Driver<[Book]> { get }
+    var results: Observable<BookResult<[Book]>> { get }
 }
 
 struct SearchViewModelImpl: SearchViewModel {
     let query = PublishSubject<String>()
-    let results: Driver<[Book]>
+    let results: Observable<BookResult<[Book]>>
     
     init(searchService: SearchService) {
         results = query
+            .distinctUntilChanged()
             .throttle(kDelayTime, scheduler: MainScheduler.instance)
             .filter({ !$0.isEmpty })
-            .distinctUntilChanged()
             .flatMapLatest({ searchService.search(query: $0) })
-            .asDriver(onErrorJustReturn: [])
     }
 }
 

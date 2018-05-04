@@ -11,40 +11,54 @@ import RxCocoa
 
 enum BooksError: Error {
     case wrongUrl
-    case adding
+    case downloadError
+    case addError
+    case deleteError
+    case markReadError
 }
 
 protocol BooksService {
-    func list() -> Observable<[Book]>
-    func add(book: Book) -> Observable<Book>
-    func markAsRead(book: Book, isRead: Bool) -> Observable<Book>
-    func delete(book: Book) -> Observable<Book>
+    func list() -> Observable<BookResult<[Book]>>
+    func add(book: Book) -> Observable<BookResult<Book>>
+    func markAsRead(book: Book, isRead: Bool) -> Observable<BookResult<Book>>
+    func delete(book: Book) -> Observable<BookResult<Book>>
 }
 
-struct BooksServiceImpl {
+class BooksServiceImpl {
     let networkSession: URLSession
     private let host = Configuration.backendHost.stringValue
     private let booksEndpoint = Configuration.booksEndpoint.stringValue
+    private var cachedBooks: [Book] = []
+    
+    init(networkSession: URLSession) {
+        self.networkSession = networkSession
+    }
     
     private func url(bookId: String = "") -> Observable<URL> {
         if var url = URL(string: "\(host)/\(booksEndpoint)") {
             url.appendPathComponent(bookId)
-            return Observable<URL>.just(url)
+            return .just(url)
         } else {
-            return Observable.error(BooksError.wrongUrl)
+            return .error(BooksError.wrongUrl)
         }
     }
 }
 
 extension BooksServiceImpl: BooksService {
-    func list() -> Observable<[Book]> {
+    func list() -> Observable<BookResult<[Book]>> {
         return url()
             .map({ URLRequest(url: $0) })
             .execute(in: networkSession)
+            .retry(kNumberOfRetries)
             .mapBooks()
+            .map({
+                self.cachedBooks = $0
+                return BookResult.success($0)
+            })
+            .catchErrorJustReturn(BookResult.error(BooksError.downloadError, cached: cachedBooks))
     }
     
-    func add(book: Book) -> Observable<Book> {
+    func add(book: Book) -> Observable<BookResult<Book>> {
         return url()
             .map({
                 var request = URLRequest(url: $0)
@@ -54,10 +68,13 @@ extension BooksServiceImpl: BooksService {
                 return request
             })
             .execute(in: networkSession)
+            .retry(kNumberOfRetries)
             .mapBook()
+            .map({ BookResult.success($0) })
+            .catchErrorJustReturn(BookResult.error(BooksError.addError, cached: nil))
     }
 
-    func markAsRead(book: Book, isRead: Bool) -> Observable<Book> {
+    func markAsRead(book: Book, isRead: Bool) -> Observable<BookResult<Book>> {
         return url(bookId: book.id)
             .map({
                 var request = URLRequest(url: $0)
@@ -67,10 +84,13 @@ extension BooksServiceImpl: BooksService {
                 return request
             })
             .execute(in: networkSession)
+            .retry(kNumberOfRetries)
             .mapBook()
+            .map({ BookResult.success($0) })
+            .catchErrorJustReturn(BookResult.error(BooksError.markReadError, cached: nil))
     }
 
-    func delete(book: Book) -> Observable<Book> {
+    func delete(book: Book) -> Observable<BookResult<Book>> {
         return url(bookId: book.id)
             .map({
                 var request = URLRequest(url: $0)
@@ -78,7 +98,11 @@ extension BooksServiceImpl: BooksService {
                 return request
             })
             .execute(in: networkSession)
+            .retry(kNumberOfRetries)
             .mapBook()
+            .map({ BookResult.success($0) })
+            .catchErrorJustReturn(BookResult.error(BooksError.deleteError, cached: nil))
     }
 }
 
+fileprivate let kNumberOfRetries: Int = 2

@@ -17,3 +17,6 @@
 "tap_to_search" = "Tap to search";
 "edit" = "Edit";
 "accept" = "Accept";
+"error_downloading" = "Error downloading, please try again and check if server is up.";
+"error_executing_operation" = "Error executing operation, please try again and check if server is up.";
+"error" = "Error";

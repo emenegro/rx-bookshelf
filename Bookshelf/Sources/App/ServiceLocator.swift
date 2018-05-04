@@ -9,12 +9,14 @@
 import UIKit
 
 final class ServiceLocator {
-    private static var networkSession = URLSession.shared
-    private static var booksService = BooksServiceImpl(networkSession: networkSession)
+    private static let networkSession = URLSession.shared
+    private static let booksService = BooksServiceImpl(networkSession: networkSession)
+    private static let searchService = SearchServiceImpl(networkSession: networkSession)
+    
     private static var searchViewModel: SearchViewModel {
-        let searchService = SearchServiceImpl(networkSession: networkSession)
         return SearchViewModelImpl(searchService: searchService)
     }
+    
     private static var listViewModel: ListViewModel {
         return ListViewModelImpl(booksService: booksService)
     }

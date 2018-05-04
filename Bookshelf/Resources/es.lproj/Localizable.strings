@@ -17,3 +17,6 @@
 "tap_to_search" = "Toca para buscar";
 "edit" = "Editar";
 "accept" = "Aceptar";
+"error_downloading" = "Error en la descarga. Por favor, vuelve a intentarlo y comprueba que el servidor está arrancado.";
+"error_executing_operation" = "Error ejecutando la operación. Por favor, vuelve a intentarlo y comprueba que el servidor está arrancado.";
+"error" = "Error";

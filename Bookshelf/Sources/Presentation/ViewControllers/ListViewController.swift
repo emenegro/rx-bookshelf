@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ListViewController: UIViewController, ActivityIndicatorHandler {
+class ListViewController: UIViewController, ActivityIndicatorHandler, AlertHandler {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
@@ -112,14 +112,23 @@ private extension ListViewController {
             .disposed(by: disposeBag)
         
         Observable.of(listViewModel.list, listViewModel.deleteResult).merge()
+            .observeOn(MainScheduler.instance)
             .hideActivityIndicator(in: self)
-            .asDriver(onErrorJustReturn: [])
+            .map({ [showErrorAlert] result -> [Book] in
+                switch result {
+                case .success(let books):
+                    return books
+                case .error(_, let cachedBooks):
+                    showErrorAlert(L10n.errorDownloading.localized)
+                    return cachedBooks ?? []
+                }
+            })
             .do(onNext: { [refreshControl, emptyStateView, editBarButtonItem] list in
                 refreshControl?.endRefreshing()
                 emptyStateView?.isHidden = !list.isEmpty
                 editBarButtonItem?.isEnabled = !list.isEmpty
             })
-            .drive(tableView.rx.items(cellIdentifier: BookTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
+            .bind(to: tableView.rx.items(cellIdentifier: BookTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
             }
             .disposed(by: disposeBag)

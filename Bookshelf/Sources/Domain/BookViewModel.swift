@@ -16,7 +16,7 @@ protocol BookViewModel {
     var markRead: PublishSubject<Void> { get }
     var markUnread: PublishSubject<Void> { get }
     // Outputs
-    var book: Observable<Book> { get }
+    var book: Observable<BookResult<Book>> { get }
 }
 
 struct BookViewModelImpl: BookViewModel {
@@ -25,7 +25,7 @@ struct BookViewModelImpl: BookViewModel {
     let removeBook = PublishSubject<Void>()
     let markRead = PublishSubject<Void>()
     let markUnread = PublishSubject<Void>()
-    let book: Observable<Book>
+    let book: Observable<BookResult<Book>>
     
     init(book: Book, booksService: BooksService) {
         self.bookVariable = Variable(book)
@@ -50,8 +50,9 @@ struct BookViewModelImpl: BookViewModel {
             .flatMapLatest({ booksService.markAsRead(book: $0, isRead: false) })
             .updateBookVariable(bookVariable)
         
+        // TODO:
         self.book = Observable.of(addResult, removeResult, markReadResult, markUnreadResult).merge()
-            .startWith(book)
+            .startWith(.success(book))
     }
 }
 
@@ -61,8 +62,12 @@ private extension ObservableType where E == Void {
     }
 }
 
-private extension ObservableType where E == Book {
-    func updateBookVariable(_ variable: Variable<Book>) -> Observable<Book> {
-        return self.do(onNext: { variable.value = $0 })
+private extension ObservableType where E == BookResult<Book> {
+    func updateBookVariable(_ variable: Variable<Book>) -> Observable<BookResult<Book>> {
+        return self.do(onNext: { result in
+            if case let .success(book) = result {
+                variable.value = book
+            }
+        })
     }
 }

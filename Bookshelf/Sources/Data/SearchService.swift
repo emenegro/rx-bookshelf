@@ -11,16 +11,21 @@ import RxCocoa
 
 enum SearchError: Error {
     case wrongUrl
+    case downloadError
 }
 
 protocol SearchService {
-    func search(query: String) -> Observable<[Book]>
+    func search(query: String) -> Observable<BookResult<[Book]>>
 }
 
-struct SearchServiceImpl {
+class SearchServiceImpl {
     let networkSession: URLSession
     private let host = Configuration.backendHost.stringValue
     private let searchEndpoint = Configuration.searchEndpoint.stringValue
+    
+    init(networkSession: URLSession) {
+        self.networkSession = networkSession
+    }
     
     private func url(query: String) -> Observable<URL> {
         if let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
@@ -33,11 +38,16 @@ struct SearchServiceImpl {
 }
 
 extension SearchServiceImpl: SearchService {
-    func search(query: String) -> Observable<[Book]> {
+    func search(query: String) -> Observable<BookResult<[Book]>> {
         return url(query: query)
             .map({ URLRequest(url: $0) })
             .execute(in: networkSession)
+            .retry(kNumberOfRetries)
             .mapBooks()
             .startWith([])
+            .map({ BookResult.success($0) })
+            .catchErrorJustReturn(BookResult.error(SearchError.downloadError, cached: nil))
     }
 }
+
+fileprivate let kNumberOfRetries: Int = 2

@@ -8,7 +8,5 @@
 	<string>search</string>
 	<key>booksEndpoint</key>
 	<string>books</string>
-	<key>requestsTimeoutInSeconds</key>
-	<string>5</string>
 </dict>
 </plist>

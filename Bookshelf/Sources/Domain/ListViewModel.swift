@@ -14,26 +14,24 @@ protocol ListViewModel {
     var getList: PublishSubject<Void> { get }
     var deleteBook: PublishSubject<Book> { get }
     // Outputs
-    var list: Driver<[Book]> { get }
-    var deleteResult: Driver<[Book]> { get }
+    var list: Observable<BookResult<[Book]>> { get }
+    var deleteResult: Observable<BookResult<[Book]>> { get }
 }
 
 struct ListViewModelImpl: ListViewModel {
     let getList = PublishSubject<Void>()
     let deleteBook = PublishSubject<Book>()
-    let list: Driver<[Book]>
-    let deleteResult: Driver<[Book]>
+    let list: Observable<BookResult<[Book]>>
+    let deleteResult: Observable<BookResult<[Book]>>
     
     init(booksService: BooksService) {
         list = getList
             .throttle(kListDelay, scheduler: MainScheduler.instance)
             .flatMap({ booksService.list() })
-            .asDriver(onErrorJustReturn: [])
         
         deleteResult = deleteBook
             .flatMap({ booksService.delete(book: $0) })
-            .flatMap({ _ in booksService.list() })
-            .asDriver(onErrorJustReturn: [])
+            .flatMap({ _ in booksService.list() }) // TODO: improve this
     }
 }
 

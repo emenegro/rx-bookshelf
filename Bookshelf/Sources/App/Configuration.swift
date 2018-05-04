@@ -12,7 +12,6 @@ enum Configuration: String {
     case backendHost
     case searchEndpoint
     case booksEndpoint
-    case requestsTimeoutInSeconds
 }
 
 extension Configuration {
@@ -29,11 +28,6 @@ extension Configuration {
     
     var stringValue: String {
         let result: String = self.value() ?? ""
-        return result
-    }
-    
-    var intValue: Int {
-        let result: Int = self.value() ?? 0
         return result
     }
 }
