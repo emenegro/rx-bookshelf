@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, ActivityIndicatorHandler {
     private let disposeBag = DisposeBag()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButtonItem: UIBarButtonItem!
@@ -48,7 +48,6 @@ private extension ListViewController {
     
     func setupNavigation() {
         definesPresentationContext = true
-        navigationItem.hidesSearchBarWhenScrolling = false
         navigationItem.searchController = searchController
     }
     
@@ -65,11 +64,18 @@ private extension ListViewController {
     func setupEmptyStateView() {
         emptyStateView = EmptyStateView.createFromNib()
         emptyStateView.translatesAutoresizingMaskIntoConstraints = false
+        emptyStateView.isHidden = true
         tableView.addSubview(emptyStateView)
         NSLayoutConstraint.activate([
             emptyStateView.topAnchor.constraint(equalTo: tableView.topAnchor, constant: kEmptyStateViewTopMargin),
             emptyStateView.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
         ])
+        
+        emptyStateView.searchButton.rx.tap.asObservable()
+            .bind { [searchBar = searchController.searchBar] in
+                searchBar.becomeFirstResponder()
+            }
+            .disposed(by: disposeBag)
     }
     
     func setupEditBarButtonItem() {
@@ -97,6 +103,7 @@ private extension ListViewController {
         let viewWillAppearObservable = rx.methodInvoked(#selector(UIViewController.viewWillAppear(_:))).map({ _ in () })
         let refreshObservable = refreshControl.rx.controlEvent(.valueChanged).asObservable()
         Observable.of(viewWillAppearObservable, refreshObservable).merge()
+            .showActivityIndicator(in: self)
             .bind(to: listViewModel.getList)
             .disposed(by: disposeBag)
         
@@ -105,6 +112,7 @@ private extension ListViewController {
             .disposed(by: disposeBag)
         
         Observable.of(listViewModel.list, listViewModel.deleteResult).merge()
+            .hideActivityIndicator(in: self)
             .asDriver(onErrorJustReturn: [])
             .do(onNext: { [refreshControl, emptyStateView, editBarButtonItem] list in
                 refreshControl?.endRefreshing()

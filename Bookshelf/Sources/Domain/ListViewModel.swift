@@ -28,7 +28,6 @@ struct ListViewModelImpl: ListViewModel {
         list = getList
             .throttle(kListDelay, scheduler: MainScheduler.instance)
             .flatMap({ booksService.list() })
-            .startWith([])
             .asDriver(onErrorJustReturn: [])
         
         deleteResult = deleteBook

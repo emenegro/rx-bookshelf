@@ -9,6 +9,5 @@
 import UIKit
 
 class EmptyStateView: UIView {
-
-
+    @IBOutlet weak var searchButton: UIButton!
 }

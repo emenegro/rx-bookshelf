@@ -15,33 +15,50 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_keyboard_arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="2f3-50-VrC">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="ic_keyboard_arrow_up" translatesAutoresizingMaskIntoConstraints="NO" id="2f3-50-VrC">
                     <rect key="frame" x="116" y="10" width="48" height="48"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUI-tB-Jme">
-                    <rect key="frame" x="10" y="68" width="260" height="122"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUI-tB-Jme">
+                    <rect key="frame" x="10" y="68" width="260" height="73"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="empty_shelf"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozp-nG-C5e">
+                    <rect key="frame" x="10" y="146" width="260" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="gtQ-Yd-rvW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="Button"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="xibLocKey" value="tap_to_search"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Ozp-nG-C5e" firstAttribute="top" secondItem="XUI-tB-Jme" secondAttribute="bottom" constant="5" id="EDg-nZ-7tX"/>
                 <constraint firstItem="XUI-tB-Jme" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="HAW-pn-fmk"/>
                 <constraint firstItem="2f3-50-VrC" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="IBf-hD-GdH"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="XUI-tB-Jme" secondAttribute="bottom" constant="10" id="RLs-0m-tW7"/>
                 <constraint firstItem="XUI-tB-Jme" firstAttribute="top" secondItem="2f3-50-VrC" secondAttribute="bottom" constant="10" id="Sb1-Wd-TNk"/>
                 <constraint firstItem="2f3-50-VrC" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="gUA-BP-7mY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Ozp-nG-C5e" secondAttribute="bottom" constant="10" id="iN6-S2-XxJ"/>
+                <constraint firstItem="Ozp-nG-C5e" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="kbO-2d-vyv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XUI-tB-Jme" secondAttribute="trailing" constant="10" id="xlJ-L6-Uk2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ozp-nG-C5e" secondAttribute="trailing" constant="10" id="zHC-kJ-hXf"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-81" y="40"/>
+            <connections>
+                <outlet property="searchButton" destination="Ozp-nG-C5e" id="x0t-qQ-yxB"/>
+            </connections>
+            <point key="canvasLocation" x="-180" y="10"/>
         </view>
     </objects>
     <resources>

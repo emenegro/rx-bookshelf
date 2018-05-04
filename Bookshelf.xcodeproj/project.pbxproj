@@ -43,6 +43,7 @@
 		3A9F3BFA209363D800E38A59 /* BooksMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF9209363D800E38A59 /* BooksMapper.swift */; };
 		3AD2F5162091D5CB00E96A4A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */; };
 		3AFC643E209C4B67000D1173 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC643D209C4B67000D1173 /* UIImage+URL.swift */; };
+		3AFC6440209C68A5000D1173 /* ActivityIndicatorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		3A9F3BF9209363D800E38A59 /* BooksMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksMapper.swift; sourceTree = "<group>"; };
 		3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3AFC643D209C4B67000D1173 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
+		3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 		3A33B32A2091D0120059A34E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */,
 				3A33B32B2091D0120059A34E /* Localizable.swift */,
 				3AFC643D209C4B67000D1173 /* UIImage+URL.swift */,
 				3A3370AB20973E71006B6166 /* UITableViewCell+Utils.swift */,
@@ -351,6 +354,7 @@
 				3AFC643E209C4B67000D1173 /* UIImage+URL.swift in Sources */,
 				3A3370A020970C1A006B6166 /* BookInListView.swift in Sources */,
 				3A3370B220979BDD006B6166 /* UIView+Utils.swift in Sources */,
+				3AFC6440209C68A5000D1173 /* ActivityIndicatorHandler.swift in Sources */,
 				3A25CEC620936FDC009C0C15 /* ServiceLocator.swift in Sources */,
 				3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */,
 				3A3370A8209736BE006B6166 /* R.swift in Sources */,

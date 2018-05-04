@@ -13,6 +13,7 @@
 "remove" = "Remove";
 "mark_read" = "Mark read";
 "mark_unread" = "Mark unread";
-"empty_shelf" = "You don't have books in your shelf.\nAdd one searching above.";
+"empty_shelf" = "You don't have books in your shelf,\nadd one searching above.";
+"tap_to_search" = "Tap to search";
 "edit" = "Edit";
 "accept" = "Accept";

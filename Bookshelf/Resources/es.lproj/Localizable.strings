@@ -13,6 +13,7 @@
 "remove" = "Quitar";
 "mark_read" = "Marcar como leído";
 "mark_unread" = "Marcar como no leído";
-"empty_shelf" = "No tienes libros en tu librería.\nAñade uno buscando arriba.";
+"empty_shelf" = "No tienes libros en tu librería,\nañade uno buscando arriba.";
+"tap_to_search" = "Toca para buscar";
 "edit" = "Editar";
 "accept" = "Aceptar";

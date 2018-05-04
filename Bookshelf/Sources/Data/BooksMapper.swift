@@ -18,9 +18,9 @@ extension ObservableType where E == Data {
         return flatMap({ (data) -> Observable<[Book]> in
             do {
                 let result = try JSONDecoder().decode([Book].self, from: data)
-                return Observable.just(result)
+                return .just(result)
             } catch {
-                return Observable<[Book]>.error(BooksMapperError.general)
+                return .error(BooksMapperError.general)
             }
         })
     }
@@ -29,9 +29,9 @@ extension ObservableType where E == Data {
         return flatMap({ (data) -> Observable<Book> in
             do {
                 let result = try JSONDecoder().decode(Book.self, from: data)
-                return Observable.just(result)
+                return .just(result)
             } catch {
-                return Observable<Book>.error(BooksMapperError.general)
+                return .error(BooksMapperError.general)
             }
         })
     }
