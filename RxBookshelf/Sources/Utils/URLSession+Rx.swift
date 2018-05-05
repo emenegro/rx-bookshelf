@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 
 extension ObservableType where E == URLRequest {
-    func execute(in networkSession: URLSession) -> Observable<Data> {
-        return flatMap({ request -> Observable<Data> in
-            networkSession.rx.data(request: request)
+    func executeIn(_ networkSession: @autoclosure @escaping () -> URLSession) -> Observable<Data> {
+        return flatMapLatest({ request -> Observable<Data> in
+            networkSession().rx.data(request: request)
         })
     }
 }

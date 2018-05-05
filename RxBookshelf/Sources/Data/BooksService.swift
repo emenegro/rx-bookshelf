@@ -48,7 +48,7 @@ extension BooksServiceImpl: BooksService {
     func list() -> Observable<BookResult<[Book]>> {
         return url()
             .map({ URLRequest(url: $0) })
-            .execute(in: networkSession)
+            .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBooks()
             .map({ [weak self] in
@@ -67,7 +67,7 @@ extension BooksServiceImpl: BooksService {
                 request.httpBody = try JSONEncoder().encode(book)
                 return request
             })
-            .execute(in: networkSession)
+            .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBook()
             .map(BookResult.success)
@@ -83,7 +83,7 @@ extension BooksServiceImpl: BooksService {
                 request.httpBody = try JSONSerialization.data(withJSONObject: ["isRead": isRead], options: [])
                 return request
             })
-            .execute(in: networkSession)
+            .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBook()
             .map(BookResult.success)
@@ -97,7 +97,7 @@ extension BooksServiceImpl: BooksService {
                 request.httpMethod = "delete"
                 return request
             })
-            .execute(in: networkSession)
+            .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBook()
             .map(BookResult.success)

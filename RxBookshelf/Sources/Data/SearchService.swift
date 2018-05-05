@@ -27,6 +27,10 @@ class SearchServiceImpl {
         self.networkSession = networkSession
     }
     
+    deinit {
+        print("ala")
+    }
+    
     private func url(query: String) -> Observable<URL> {
         if let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
            let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") {
@@ -41,7 +45,7 @@ extension SearchServiceImpl: SearchService {
     func search(query: String) -> Observable<BookResult<[Book]>> {
         return url(query: query)
             .map({ URLRequest(url: $0) })
-            .execute(in: networkSession)
+            .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBooks()
             .startWith([])
