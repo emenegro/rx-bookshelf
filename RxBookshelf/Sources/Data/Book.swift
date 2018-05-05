@@ -24,7 +24,7 @@ struct Book: Codable {
     }
     
     var isInShelf: Bool {
-        return !id.isEmpty // Id is only populated when added to shelf
+        return !id.isEmpty // Id is automatically populated on serverside when added to shelf
     }
     
     private enum CodingKeys: String, CodingKey {

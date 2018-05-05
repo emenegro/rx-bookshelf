@@ -13,7 +13,7 @@ protocol AppFlowController: class {
     func showDetailOf(book: Book)
 }
 
-class BookshelfFlowNavigationController: UINavigationController, AppFlowController {
+class BookshelfFlowController: UINavigationController, AppFlowController {
     private var searchResultsViewController: SearchResultsViewController {
         let searchResultsViewController = SearchResultsViewController.createFromStoryboard()
         ServiceLocator.injectDependencies(to: searchResultsViewController)

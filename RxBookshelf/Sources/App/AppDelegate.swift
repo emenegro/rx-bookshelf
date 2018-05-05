@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         ServiceLocator.injectInitialDependencies(window: window)
         AppAppearance.apply(to: window)
-        activateRxSwiftDebugModeIfNeeded()
+        activateRxSwiftDebugMode()
         return true
     }
     
-    private func activateRxSwiftDebugModeIfNeeded() {
+    private func activateRxSwiftDebugMode() {
         #if DEBUG
         _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
             .subscribe(onNext: { _ in

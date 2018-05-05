@@ -27,10 +27,6 @@ class SearchServiceImpl {
         self.networkSession = networkSession
     }
     
-    deinit {
-        print("ala")
-    }
-    
     private func url(query: String) -> Observable<URL> {
         if let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
            let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") {

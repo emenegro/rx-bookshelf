@@ -12,7 +12,7 @@ final class ServiceLocator {
     private static let networkSession = URLSession.shared
     
     static func injectInitialDependencies(window: UIWindow?) {
-        guard let flowViewController = window?.rootViewController as? BookshelfFlowNavigationController else {
+        guard let flowViewController = window?.rootViewController as? BookshelfFlowController else {
             fatalError("Initial UI is not correctly configured, please review Main.storyboard")
         }
         flowViewController.configureInitialViewController()
