@@ -1,0 +1,17 @@
+language: objective-c
+osx_image: xcode9.3
+
+xcode_project: RxBookshelf.xcodeproj
+xcode_scheme: RxBookshelf
+
+cache:
+  directories:
+  - Carthage
+
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - carthage bootstrap --verbose --no-use-binaries -configuration Debug --platform iOS --cache-builds
+
+script:
+  - xcodebuild clean build -sdk iphonesimulator -project RxBookshelf.xcodeproj -scheme RxBookshelf -destination 'platform=iOS Simulator,OS=11.3,name=iPhone SE'
