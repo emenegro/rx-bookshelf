@@ -1,10 +1,11 @@
-![Icon](etc/rxbookshelf.png)
+![Icon](etc/rxbookshelf.png =200x200)
 
 # RxBookshelf
 
 Simple project of a bookshelf to learn Reactive programming in Swift with RxSwift.
 
-<img src="etc/screen4.png" width=160> <img src="etc/screen1.png" width=160> <img src="etc/screen2.png" width=160> <img src="etc/screen3.png" width=160>
+<img src="etc/screen4.png" width=180> <img src="etc/screen1.png" width=180> <img src="etc/screen2.png" width=180> <img src="etc/screen3.png" width=180>
+
 # Installation
 
 This project uses Carthage. Run 
@@ -22,8 +23,11 @@ After that fill the IP of the server in the `Configuration.plist` file as follow
 ![Icon](etc/config.png)
 
 ### TODO
+
 - Review memory management because there are RxSwift resources not being correctly disposed.
+- Use RxDataSources to improve table view management.
 - Testing.
 
 ### License
+
 This code is licensed under the [MIT License](LICENSE).
