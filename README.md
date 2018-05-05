@@ -1,11 +1,10 @@
-# RxBookshelf
-
 ![Icon](etc/rxbookshelf.png)
+
+# RxBookshelf
 
 Simple project of a bookshelf to learn Reactive programming in Swift with RxSwift.
 
-<img src="etc/screen1.png" width=280> <img src="etc/screen2.png" width=280> <img src="etc/screen3.png" width=280> <img src="etc/screen4.png" width=280>
-
+<img src="etc/screen4.png" width=160> <img src="etc/screen1.png" width=160> <img src="etc/screen2.png" width=160> <img src="etc/screen3.png" width=160>
 # Installation
 
 This project uses Carthage. Run 
