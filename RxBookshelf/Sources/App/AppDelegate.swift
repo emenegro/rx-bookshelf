@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func activateRxSwiftDebugMode() {
-        #if DEBUG
-        _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
-            .subscribe(onNext: { _ in
-                print("RxSwift resource count \(RxSwift.Resources.total)")
-            })
-        #endif
+//        #if DEBUG
+//        _ = Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+//            .subscribe(onNext: { _ in
+//                print("RxSwift resource count \(RxSwift.Resources.total)")
+//            })
+//        #endif
     }
 }
 
