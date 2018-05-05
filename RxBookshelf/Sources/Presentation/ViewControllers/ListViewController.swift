@@ -1,6 +1,6 @@
 //
 //  SearchTableViewController.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 25/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -18,7 +18,7 @@ class ListViewController: UIViewController, ActivityIndicatorHandler, AlertHandl
     var refreshControl: UIRefreshControl!
     var listViewModel: ListViewModel!
     var searchResultsViewController: SearchResultsViewController!
-    var flowViewController: BookshelfFlowNavigationController!
+    weak var flowViewController: AppFlowController!
     
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: searchResultsViewController)

@@ -1,6 +1,6 @@
 //
 //  BooksService.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 25/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -51,8 +51,8 @@ extension BooksServiceImpl: BooksService {
             .execute(in: networkSession)
             .retry(kNumberOfRetries)
             .mapBooks()
-            .map({
-                self.cachedBooks = $0
+            .map({ [weak self] in
+                self?.cachedBooks = $0
                 return BookResult.success($0)
             })
             .catchErrorJustReturn(BookResult.error(BooksError.downloadError, cached: cachedBooks))
@@ -70,7 +70,7 @@ extension BooksServiceImpl: BooksService {
             .execute(in: networkSession)
             .retry(kNumberOfRetries)
             .mapBook()
-            .map({ BookResult.success($0) })
+            .map(BookResult.success)
             .catchErrorJustReturn(BookResult.error(BooksError.addError, cached: nil))
     }
 
@@ -86,7 +86,7 @@ extension BooksServiceImpl: BooksService {
             .execute(in: networkSession)
             .retry(kNumberOfRetries)
             .mapBook()
-            .map({ BookResult.success($0) })
+            .map(BookResult.success)
             .catchErrorJustReturn(BookResult.error(BooksError.markReadError, cached: nil))
     }
 
@@ -100,7 +100,7 @@ extension BooksServiceImpl: BooksService {
             .execute(in: networkSession)
             .retry(kNumberOfRetries)
             .mapBook()
-            .map({ BookResult.success($0) })
+            .map(BookResult.success)
             .catchErrorJustReturn(BookResult.error(BooksError.deleteError, cached: nil))
     }
 }

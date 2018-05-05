@@ -1,6 +1,6 @@
 //
 //  AppFlowController.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 26/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AppFlowController {
+protocol AppFlowController: class {
     func configureInitialViewController()
     func showDetailOf(book: Book)
 }

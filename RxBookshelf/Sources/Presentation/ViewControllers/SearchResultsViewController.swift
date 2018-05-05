@@ -1,6 +1,6 @@
 //
 //  SearchResultsViewController.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 26/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -13,7 +13,7 @@ import RxCocoa
 class SearchResultsViewController: UITableViewController, AlertHandler {
     private let disposeBag = DisposeBag()
     var searchViewModel: SearchViewModel!
-    var flowViewController: BookshelfFlowNavigationController!
+    weak var flowViewController: AppFlowController!
 }
 
 extension SearchResultsViewController {

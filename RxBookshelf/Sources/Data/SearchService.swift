@@ -1,6 +1,6 @@
 //
 //  SearchNetworkDataSource.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 24/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -30,9 +30,9 @@ class SearchServiceImpl {
     private func url(query: String) -> Observable<URL> {
         if let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
            let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") {
-            return Observable<URL>.just(url)
+            return .just(url)
         } else {
-            return Observable.error(BooksError.wrongUrl)
+            return .error(BooksError.wrongUrl)
         }
     }
 }
@@ -45,7 +45,7 @@ extension SearchServiceImpl: SearchService {
             .retry(kNumberOfRetries)
             .mapBooks()
             .startWith([])
-            .map({ BookResult.success($0) })
+            .map(BookResult.success)
             .catchErrorJustReturn(BookResult.error(SearchError.downloadError, cached: nil))
     }
 }

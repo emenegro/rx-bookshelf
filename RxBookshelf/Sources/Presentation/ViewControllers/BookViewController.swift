@@ -1,6 +1,6 @@
 //
 //  BookViewController.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 27/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -19,10 +19,10 @@ class BookViewController: UIViewController, ActivityIndicatorHandler, AlertHandl
     @IBOutlet weak var publishedDateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet var addBarButtonItem: UIBarButtonItem!
-    @IBOutlet var removeBarButtonItem: UIBarButtonItem!
-    @IBOutlet var markReadBarButtonItem: UIBarButtonItem!
-    @IBOutlet var markUnreadBarButtonItem: UIBarButtonItem!
+    var addBarButtonItem: UIBarButtonItem!
+    var removeBarButtonItem: UIBarButtonItem!
+    var markReadBarButtonItem: UIBarButtonItem!
+    var markUnreadBarButtonItem: UIBarButtonItem!
     var bookViewModel: BookViewModel!
 }
 
@@ -37,6 +37,14 @@ extension BookViewController {
 private extension BookViewController {
     func setupView() {
         title = L10n.detail.localized
+        setupToolbarButtons()
+    }
+    
+    func setupToolbarButtons() {
+        addBarButtonItem = UIBarButtonItem(title: L10n.add.localized, style: .plain, target: nil, action: nil)
+        removeBarButtonItem = UIBarButtonItem(title: L10n.remove.localized, style: .plain, target: nil, action: nil)
+        markReadBarButtonItem = UIBarButtonItem(title: L10n.markRead.localized, style: .plain, target: nil, action: nil)
+        markUnreadBarButtonItem = UIBarButtonItem(title: L10n.markUnread.localized, style: .plain, target: nil, action: nil)
     }
 }
 

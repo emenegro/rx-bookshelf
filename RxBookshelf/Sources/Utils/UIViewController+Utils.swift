@@ -1,6 +1,6 @@
 //
 //  UIViewController+Utils.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 1/5/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.

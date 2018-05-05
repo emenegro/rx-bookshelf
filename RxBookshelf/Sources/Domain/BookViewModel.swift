@@ -1,6 +1,6 @@
 //
 //  BookViewModel.swift
-//  Bookshelf
+//  RxBookshelf
 //
 //  Created by Mario on 27/4/18.
 //  Copyright © 2018 Mario Negro. All rights reserved.
@@ -50,7 +50,6 @@ struct BookViewModelImpl: BookViewModel {
             .flatMapLatest({ booksService.markAsRead(book: $0, isRead: false) })
             .updateBookVariable(bookVariable)
         
-        // TODO:
         self.book = Observable.of(addResult, removeResult, markReadResult, markUnreadResult).merge()
             .startWith(.success(book))
     }
