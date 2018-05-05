@@ -1,6 +1,6 @@
 # RxBookshelf
 
-[![codebeat badge](https://codebeat.co/badges/b2305a5a-325d-4c40-83f4-e6e605c44ed9)](https://codebeat.co/projects/github-com-emenegro-rx-bookshelf-master)
+[![Build Status](https://travis-ci.org/emenegro/rx-bookshelf.svg?branch=master)](https://travis-ci.org/emenegro/rx-bookshelf [![codebeat badge](https://codebeat.co/badges/b2305a5a-325d-4c40-83f4-e6e605c44ed9)](https://codebeat.co/projects/github-com-emenegro-rx-bookshelf-master)
 
 <img src="etc/rxbookshelf.png" width=200> 
 
