@@ -1,4 +1,4 @@
-![Icon](etc/rxbookshelf.png =200x200)
+<img src="etc/rxbookshelf.png" width=200> 
 
 # RxBookshelf
 
@@ -20,7 +20,7 @@ to install RxSwift frameworks in debug mode.
 
 After that fill the IP of the server in the `Configuration.plist` file as follow:
 
-![Icon](etc/config.png)
+<img src="etc/config.png" width=400> 
 
 ### TODO
 
