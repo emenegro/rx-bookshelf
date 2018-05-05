@@ -1,10 +1,12 @@
-<img src="etc/rxbookshelf.png" width=200> 
-
 # RxBookshelf
+
+[![codebeat badge](https://codebeat.co/badges/b2305a5a-325d-4c40-83f4-e6e605c44ed9)](https://codebeat.co/projects/github-com-emenegro-rx-bookshelf-master)
+
+<img src="etc/rxbookshelf.png" width=200> 
 
 Simple project of a bookshelf to learn Reactive programming in Swift with RxSwift.
 
-<img src="etc/screen4.png" width=180> <img src="etc/screen1.png" width=180> <img src="etc/screen2.png" width=180> <img src="etc/screen3.png" width=180>
+<img src="etc/screen4.png" width=190> <img src="etc/screen1.png" width=190> <img src="etc/screen2.png" width=190> <img src="etc/screen3.png" width=190>
 
 # Installation
 

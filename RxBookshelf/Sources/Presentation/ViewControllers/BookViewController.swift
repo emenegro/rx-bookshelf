@@ -93,18 +93,8 @@ private extension BookViewController {
         publishedDateLabel.text = book.publishedDate
         descriptionLabel.text = book.description
         markReadBarButtonItem.isEnabled = book.isInShelf
-        populateCoverImage(book)
+        coverImageView.populateCoverImage(book)
         setToolbarItems(for: book)
-    }
-    
-    func populateCoverImage(_ book: Book) {
-        guard let url = book.coverImageUrl?.absoluteString else { return }
-        DispatchQueue.global().async { [coverImageView] in
-            let image = UIImage(url: url)
-            DispatchQueue.main.async {
-                coverImageView?.image = image
-            }
-        }
     }
     
     func setToolbarItems(for book: Book) {

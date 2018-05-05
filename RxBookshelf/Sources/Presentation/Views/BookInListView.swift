@@ -19,17 +19,7 @@ class BookInListView: UIView {
     func configure(with book: Book) {
         titleLabel.text = book.title
         authorsLabel.text = book.authorsString
-        populateCoverImage(book)
-    }
-    
-    func populateCoverImage(_ book: Book) {
-        guard let url = book.coverImageUrl?.absoluteString else { return }
-        DispatchQueue.global().async { [coverImageView] in
-            let image = UIImage(url: url)
-            DispatchQueue.main.async {
-                coverImageView?.image = image
-            }
-        }
+        coverImageView.populateCoverImage(book)
     }
     
     func prepareForReuse() {

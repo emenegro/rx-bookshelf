@@ -33,6 +33,7 @@
 		3A33B3262090AC1D0059A34E /* BooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33B3252090AC1D0059A34E /* BooksService.swift */; };
 		3A33B32C2091D0120059A34E /* Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33B32B2091D0120059A34E /* Localizable.swift */; };
 		3A33B32F2091D03F0059A34E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A33B3312091D03F0059A34E /* Localizable.strings */; };
+		3A358A2F209DD7EC007613FC /* BookImageFiller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A358A2E209DD7EC007613FC /* BookImageFiller.swift */; };
 		3A69EC38208F854B002D00E8 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC35208F854B002D00E8 /* RxSwift.framework */; };
 		3A69EC4920907858002D00E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A69EC4020907857002D00E8 /* Assets.xcassets */; };
 		3A69EC4A20907858002D00E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A69EC4120907857002D00E8 /* LaunchScreen.storyboard */; };
@@ -78,6 +79,7 @@
 		3A33B32B2091D0120059A34E /* Localizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localizable.swift; sourceTree = "<group>"; };
 		3A33B3302091D03F0059A34E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3A33B3322091D05B0059A34E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		3A358A2E209DD7EC007613FC /* BookImageFiller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookImageFiller.swift; sourceTree = "<group>"; };
 		3A69EC35208F854B002D00E8 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		3A69EC37208F854B002D00E8 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		3A69EC4020907857002D00E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 		3A33709320970BC1006B6166 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3A358A2E209DD7EC007613FC /* BookImageFiller.swift */,
 				3A33709F20970C1A006B6166 /* BookInListView.swift */,
 				3A3370A120970DBE006B6166 /* BookInListView.xib */,
 				3A3370A5209734D1006B6166 /* BookTableViewCell.swift */,
@@ -289,7 +292,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "RxBookshelfs" */;
+			buildConfigurationList = 3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "RxBookshelf" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -380,6 +383,7 @@
 				3A9F3BF22092659D00E38A59 /* AppFlowController.swift in Sources */,
 				3A3370922097055F006B6166 /* ListViewModel.swift in Sources */,
 				3A25CEC820936FDC009C0C15 /* AppDelegate.swift in Sources */,
+				3A358A2F209DD7EC007613FC /* BookImageFiller.swift in Sources */,
 				3A33709C20970BC1006B6166 /* SearchResultsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -579,7 +583,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "RxBookshelfs" */ = {
+		3A127E9B208F7B2D00561B57 /* Build configuration list for PBXProject "RxBookshelf" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A127EB2208F7B2F00561B57 /* Debug */,
