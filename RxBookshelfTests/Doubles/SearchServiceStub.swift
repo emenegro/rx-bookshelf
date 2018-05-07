@@ -21,7 +21,7 @@ class SearchServiceStub: SearchService {
         if erroring {
             return .just(BookResult.error(SearchError.downloadError, cached: nil))
         } else {
-            return books.map(BookResult.success)
+            return dummyBooks.map(BookResult.success)
         }
     }
 }

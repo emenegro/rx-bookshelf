@@ -11,12 +11,20 @@ import RxSwift
 import RxBlocking
 @testable import RxBookshelf
 
-var books: Observable<[Book]> {
+var dummyBooks: Observable<[Book]> {
     return data.mapBooks()
 }
 
-var rawBooks: [Book] {
+var rawDummyBooks: [Book] {
     return try! data.mapBooks().toBlocking().single()
+}
+
+var dummyBook: Observable<Book> {
+    return dummyBooks.map({ $0.first! })
+}
+
+var rawDummyBook: Book {
+    return rawDummyBooks.first!
 }
 
 private let data: Observable<Data> = {

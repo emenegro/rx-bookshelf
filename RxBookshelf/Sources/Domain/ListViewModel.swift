@@ -26,13 +26,16 @@ struct ListViewModelImpl: ListViewModel {
     
     init(booksService: BooksService) {
         list = getList
-            .throttle(kListDelay, scheduler: MainScheduler.instance)
             .flatMapLatest({ booksService.list() })
         
         deleteResult = deleteBook
             .flatMapLatest({ booksService.delete(book: $0) })
-            .flatMapLatest({ _ in booksService.list() }) // TODO: use RxDataSources to diff data source and avoid get list again
+            .flatMapLatest({ result -> Observable<BookResult<[Book]>> in // TODO: use RxDataSources to diff data source and avoid get list again
+                if case let .error(error, _) = result {
+                    return .just(BookResult<[Book]>.error(error, cached: nil))
+                } else {
+                    return booksService.list()
+                }
+            })
     }
 }
-
-private let kListDelay: RxTimeInterval = 0.5
