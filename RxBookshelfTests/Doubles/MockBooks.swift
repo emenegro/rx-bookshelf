@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RxBlocking
 @testable import RxBookshelf
 
 var books: Observable<[Book]> {

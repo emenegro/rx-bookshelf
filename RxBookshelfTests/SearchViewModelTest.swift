@@ -9,7 +9,6 @@
 import XCTest
 import RxSwift
 import RxTest
-import RxBlocking
 @testable import RxBookshelf
 
 class SearchViewModelTest: XCTestCase {
