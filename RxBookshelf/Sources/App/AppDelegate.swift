@@ -9,15 +9,23 @@
 import UIKit
 import RxSwift
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        ServiceLocator.injectInitialDependencies(window: window)
-        AppAppearance.apply(to: window)
+        configureEntryPoint()
         activateRxSwiftDebugMode()
         return true
+    }
+    
+    private func configureEntryPoint() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        window = UIWindow()
+        window?.rootViewController = storyboard.instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+        
+        ServiceLocator.injectInitialDependencies(window: window)
+        AppAppearance.apply(to: window)
     }
     
     private func activateRxSwiftDebugMode() {

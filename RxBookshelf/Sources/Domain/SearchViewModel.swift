@@ -20,13 +20,13 @@ struct SearchViewModelImpl: SearchViewModel {
     let query = PublishSubject<String>()
     let results: Observable<BookResult<[Book]>>
     
-    init(searchService: SearchService) {
+    init(searchService: SearchService, scheduler: SchedulerType = MainScheduler.instance) {
         results = query
             .distinctUntilChanged()
-            .throttle(kDelayTime, scheduler: MainScheduler.instance)
+            .throttle(kThrottleTime, scheduler: scheduler)
             .filter({ !$0.isEmpty })
             .flatMapLatest({ searchService.search(query: $0) })
     }
 }
 
-fileprivate let kDelayTime: RxTimeInterval = 0.5
+fileprivate let kThrottleTime: RxTimeInterval = 1
