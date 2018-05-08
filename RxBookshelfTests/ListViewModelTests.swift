@@ -1,5 +1,5 @@
 //
-//  ListViewModelTest.swift
+//  ListViewModelTests.swift
 //  RxBookshelfTests
 //
 //  Created by Mario on 7/5/18.
@@ -11,7 +11,7 @@ import RxSwift
 import RxTest
 @testable import RxBookshelf
 
-class ListViewModelTest: ViewModelBaseTest  {
+class ListViewModelTests: ViewModelBaseTest {
     
     func test_when_getListErrored_then_nextEventWithDownloadError() {
         let sut = ListViewModelImpl(booksService: BooksServiceStub(erroring: true))
@@ -19,8 +19,8 @@ class ListViewModelTest: ViewModelBaseTest  {
             Recorded.next(100, ()),
             Recorded.next(300, ())
         ]
-        let observer = factory.observer(binding: sut.getList, toEvents: events, toObserve: sut.list)
         
+        let observer = factory.observer(binding: sut.getList, toEvents: events, toObserve: sut.list)
         scheduler.start()
         
         let expected = [
@@ -35,8 +35,8 @@ class ListViewModelTest: ViewModelBaseTest  {
         let events = [
             Recorded.next(100, ())
         ]
-        let observer = factory.observer(binding: sut.getList, toEvents: events, toObserve: sut.list)
         
+        let observer = factory.observer(binding: sut.getList, toEvents: events, toObserve: sut.list)
         scheduler.start()
         
         let expected = [
@@ -50,8 +50,8 @@ class ListViewModelTest: ViewModelBaseTest  {
         let events = [
             Recorded.next(100, (rawDummyBook))
         ]
-        let observer = factory.observer(binding: sut.deleteBook, toEvents: events, toObserve: sut.deleteResult)
         
+        let observer = factory.observer(binding: sut.deleteBook, toEvents: events, toObserve: sut.deleteResult)
         scheduler.start()
         
         let expected = [
@@ -65,8 +65,8 @@ class ListViewModelTest: ViewModelBaseTest  {
         let events = [
             Recorded.next(100, (rawDummyBook))
         ]
-        let observer = factory.observer(binding: sut.deleteBook, toEvents: events, toObserve: sut.deleteResult)
         
+        let observer = factory.observer(binding: sut.deleteBook, toEvents: events, toObserve: sut.deleteResult)
         scheduler.start()
         
         let expected = [

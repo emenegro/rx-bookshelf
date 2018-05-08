@@ -1,5 +1,5 @@
 //
-//  SearchViewModelTest.swift
+//  SearchViewModelTests.swift
 //  RxBookshelfTests
 //
 //  Created by Mario on 6/5/18.
@@ -11,7 +11,7 @@ import RxSwift
 import RxTest
 @testable import RxBookshelf
 
-class SearchViewModelTest: ViewModelBaseTest {
+class SearchViewModelTests: ViewModelBaseTest {
     
     func test_when_searchErrored_then_nextEventWithDownloadError() {
         let sut = SearchViewModelImpl(searchService: SearchServiceStub(erroring: true), scheduler: scheduler)
@@ -19,8 +19,8 @@ class SearchViewModelTest: ViewModelBaseTest {
             Recorded.next(200, ("Rx")),
             Recorded.next(800, ("RxSwift"))
         ]
-        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
 
+        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
         scheduler.start()
         
         let expected = [
@@ -35,8 +35,8 @@ class SearchViewModelTest: ViewModelBaseTest {
         let events = [
             Recorded.next(200, ("RxSwift"))
         ]
-        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
 
+        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
         scheduler.start()
         
         let expected = [
@@ -51,8 +51,8 @@ class SearchViewModelTest: ViewModelBaseTest {
             Recorded.next(200, ("RxSwift")),
             Recorded.next(300, ("RxSwift"))
         ]
-        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
 
+        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
         scheduler.start()
         
         let expected = [
@@ -66,8 +66,8 @@ class SearchViewModelTest: ViewModelBaseTest {
         let events = [
             Recorded.next(200, (""))
         ]
-        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
         
+        let observer = factory.observer(binding: sut.query, toEvents: events, toObserve: sut.results)
         scheduler.start()
         
         XCTAssertEqual(observer.events, [])

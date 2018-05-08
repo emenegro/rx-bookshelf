@@ -42,19 +42,20 @@
 		3A8400DE209B002400B1FEFA /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC37208F854B002D00E8 /* RxCocoa.framework */; };
 		3A9F3BF22092659D00E38A59 /* AppFlowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF12092659D00E38A59 /* AppFlowController.swift */; };
 		3A9F3BFA209363D800E38A59 /* BooksMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9F3BF9209363D800E38A59 /* BooksMapper.swift */; };
-		3AC7A02B209F007900E05714 /* SearchViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A02A209F007900E05714 /* SearchViewModelTest.swift */; };
 		3AC7A02C209F016100E05714 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC7A018209EFC4C00E05714 /* RxBlocking.framework */; };
 		3AC7A02D209F016100E05714 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC37208F854B002D00E8 /* RxCocoa.framework */; };
 		3AC7A02E209F016100E05714 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69EC35208F854B002D00E8 /* RxSwift.framework */; };
 		3AC7A02F209F016100E05714 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC7A019209EFC4C00E05714 /* RxTest.framework */; };
 		3AC7A037209F029E00E05714 /* SearchServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A035209F029E00E05714 /* SearchServiceStub.swift */; };
-		3AC7A038209F029E00E05714 /* MockBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A036209F029E00E05714 /* MockBooks.swift */; };
+		3AC7A038209F029E00E05714 /* DummyBooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A036209F029E00E05714 /* DummyBooks.swift */; };
 		3AC7A03B20A04A5900E05714 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A03A20A04A5900E05714 /* main.swift */; };
-		3AC7A03D20A04F1C00E05714 /* MockAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A03C20A04F1C00E05714 /* MockAppDelegate.swift */; };
-		3AC7A04A20A0D08E00E05714 /* ListViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A04920A0D08E00E05714 /* ListViewModelTest.swift */; };
+		3AC7A03D20A04F1C00E05714 /* FakeAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A03C20A04F1C00E05714 /* FakeAppDelegate.swift */; };
 		3AC7A04C20A0D09300E05714 /* BooksServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A04B20A0D09300E05714 /* BooksServiceStub.swift */; };
 		3AC7A05120A1020700E05714 /* ViewModelTestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A05020A1020700E05714 /* ViewModelTestFactory.swift */; };
 		3AC7A05320A103FC00E05714 /* ViewModelBaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A05220A103FC00E05714 /* ViewModelBaseTest.swift */; };
+		3AC7A05520A1928C00E05714 /* BookViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A05420A1928C00E05714 /* BookViewModelTests.swift */; };
+		3AC7A05820A192CE00E05714 /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A05620A192CD00E05714 /* ListViewModelTests.swift */; };
+		3AC7A05920A192CE00E05714 /* SearchViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7A05720A192CD00E05714 /* SearchViewModelTests.swift */; };
 		3AD2F5162091D5CB00E96A4A /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */; };
 		3AFC643E209C4B67000D1173 /* UIImage+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC643D209C4B67000D1173 /* UIImage+URL.swift */; };
 		3AFC6440209C68A5000D1173 /* ActivityIndicatorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */; };
@@ -117,15 +118,16 @@
 		3AC7A019209EFC4C00E05714 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
 		3AC7A020209EFC9000E05714 /* RxBookshelfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxBookshelfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AC7A024209EFC9000E05714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AC7A02A209F007900E05714 /* SearchViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModelTest.swift; sourceTree = "<group>"; };
 		3AC7A035209F029E00E05714 /* SearchServiceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchServiceStub.swift; sourceTree = "<group>"; };
-		3AC7A036209F029E00E05714 /* MockBooks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockBooks.swift; sourceTree = "<group>"; };
+		3AC7A036209F029E00E05714 /* DummyBooks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyBooks.swift; sourceTree = "<group>"; };
 		3AC7A03A20A04A5900E05714 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		3AC7A03C20A04F1C00E05714 /* MockAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAppDelegate.swift; sourceTree = "<group>"; };
-		3AC7A04920A0D08E00E05714 /* ListViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelTest.swift; sourceTree = "<group>"; };
+		3AC7A03C20A04F1C00E05714 /* FakeAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeAppDelegate.swift; sourceTree = "<group>"; };
 		3AC7A04B20A0D09300E05714 /* BooksServiceStub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooksServiceStub.swift; sourceTree = "<group>"; };
 		3AC7A05020A1020700E05714 /* ViewModelTestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelTestFactory.swift; sourceTree = "<group>"; };
 		3AC7A05220A103FC00E05714 /* ViewModelBaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBaseTest.swift; sourceTree = "<group>"; };
+		3AC7A05420A1928C00E05714 /* BookViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModelTests.swift; sourceTree = "<group>"; };
+		3AC7A05620A192CD00E05714 /* ListViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
+		3AC7A05720A192CD00E05714 /* SearchViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModelTests.swift; sourceTree = "<group>"; };
 		3AD2F5152091D5CB00E96A4A /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		3AFC643D209C4B67000D1173 /* UIImage+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+URL.swift"; sourceTree = "<group>"; };
 		3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHandler.swift; sourceTree = "<group>"; };
@@ -302,8 +304,9 @@
 			isa = PBXGroup;
 			children = (
 				3AC7A024209EFC9000E05714 /* Info.plist */,
-				3AC7A04920A0D08E00E05714 /* ListViewModelTest.swift */,
-				3AC7A02A209F007900E05714 /* SearchViewModelTest.swift */,
+				3AC7A05420A1928C00E05714 /* BookViewModelTests.swift */,
+				3AC7A05620A192CD00E05714 /* ListViewModelTests.swift */,
+				3AC7A05720A192CD00E05714 /* SearchViewModelTests.swift */,
 				3AC7A05220A103FC00E05714 /* ViewModelBaseTest.swift */,
 				3AC7A034209F029E00E05714 /* Doubles */,
 				3AC7A04F20A101EF00E05714 /* Utils */,
@@ -315,8 +318,8 @@
 			isa = PBXGroup;
 			children = (
 				3AC7A04B20A0D09300E05714 /* BooksServiceStub.swift */,
-				3AC7A03C20A04F1C00E05714 /* MockAppDelegate.swift */,
-				3AC7A036209F029E00E05714 /* MockBooks.swift */,
+				3AC7A036209F029E00E05714 /* DummyBooks.swift */,
+				3AC7A03C20A04F1C00E05714 /* FakeAppDelegate.swift */,
 				3AC7A035209F029E00E05714 /* SearchServiceStub.swift */,
 			);
 			path = Doubles;
@@ -508,13 +511,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AC7A02B209F007900E05714 /* SearchViewModelTest.swift in Sources */,
 				3AC7A05320A103FC00E05714 /* ViewModelBaseTest.swift in Sources */,
 				3AC7A05120A1020700E05714 /* ViewModelTestFactory.swift in Sources */,
-				3AC7A04A20A0D08E00E05714 /* ListViewModelTest.swift in Sources */,
 				3AC7A04C20A0D09300E05714 /* BooksServiceStub.swift in Sources */,
-				3AC7A038209F029E00E05714 /* MockBooks.swift in Sources */,
-				3AC7A03D20A04F1C00E05714 /* MockAppDelegate.swift in Sources */,
+				3AC7A038209F029E00E05714 /* DummyBooks.swift in Sources */,
+				3AC7A05520A1928C00E05714 /* BookViewModelTests.swift in Sources */,
+				3AC7A03D20A04F1C00E05714 /* FakeAppDelegate.swift in Sources */,
+				3AC7A05920A192CE00E05714 /* SearchViewModelTests.swift in Sources */,
+				3AC7A05820A192CE00E05714 /* ListViewModelTests.swift in Sources */,
 				3AC7A037209F029E00E05714 /* SearchServiceStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

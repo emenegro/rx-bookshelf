@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let appDelegateClass: AnyClass = NSClassFromString("RxBookshelfTests.MockAppDelegate") ?? AppDelegate.self
+let appDelegateClass: AnyClass = NSClassFromString("RxBookshelfTests.FakeAppDelegate") ?? AppDelegate.self
 
 UIApplicationMain(
     CommandLine.argc,

@@ -1,5 +1,5 @@
 //
-//  MockBooks.swift
+//  DummyBooks.swift
 //  RxBookshelfTests
 //
 //  Created by Mario on 6/5/18.

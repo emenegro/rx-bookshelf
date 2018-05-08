@@ -1,5 +1,5 @@
 //
-//  MockAppDelegate.swift
+//  FakeAppDelegate.swift
 //  RxBookshelfTests
 //
 //  Created by Mario on 7/5/18.
@@ -8,5 +8,5 @@
 
 import UIKit
 
-class MockAppDelegate: UIResponder, UIApplicationDelegate {
+class FakeAppDelegate: UIResponder, UIApplicationDelegate {
 }
