@@ -28,7 +28,6 @@ After that fill the IP of the server in the `Configuration.plist` file as follow
 
 - Review memory management because there are RxSwift resources not being correctly disposed.
 - Use RxDataSources to improve table view management.
-- Testing.
 
 ### License
 
