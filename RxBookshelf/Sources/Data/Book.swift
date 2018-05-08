@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Book: Codable {
+struct Book: Codable, Equatable {
     let id: String
     let title: String
     let authors: [String]
