@@ -26,8 +26,7 @@ After that fill the IP of the server in the `Configuration.plist` file as follow
 
 ### TODO
 
-- Review memory management because there are RxSwift resources not being correctly disposed.
-- Use RxDataSources to improve table view management.
+See [Projects](https://github.com/emenegro/rx-bookshelf/projects) section.
 
 ### License
 

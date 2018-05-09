@@ -119,10 +119,13 @@ private extension ListViewController {
                     return cachedBooks ?? []
                 }
             })
-            .do(onNext: { [refreshControl, emptyStateView, editBarButtonItem] list in
+            .do(onNext: { [refreshControl, emptyStateView, editBarButtonItem, tableView] list in
+                let empty = list.isEmpty
+                let tableViewEditing = tableView?.isEditing ?? false
                 refreshControl?.endRefreshing()
-                emptyStateView?.isHidden = !list.isEmpty
-                editBarButtonItem?.isEnabled = !list.isEmpty
+                emptyStateView?.isHidden = !empty
+                editBarButtonItem?.isEnabled = !empty
+                tableView?.setEditing(tableViewEditing && !empty, animated: false)
             })
             .bind(to: tableView.rx.items(cellIdentifier: BookTableViewCell.reuseIdentifier)) { (index, book: Book, cell: SearchResultTableViewCell) in
                 cell.configure(with: book)
@@ -136,6 +139,7 @@ private extension ListViewController {
             .disposed(by: disposeBag)
         
         tableView.rx.modelDeleted(Book.self)
+            .showActivityIndicator(in: self)
             .bind(to: listViewModel.deleteBook)
             .disposed(by: disposeBag)
     }
