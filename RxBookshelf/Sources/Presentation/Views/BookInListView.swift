@@ -7,11 +7,8 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class BookInListView: UIView {
-    private let disposeBag = DisposeBag()
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorsLabel: UILabel!
