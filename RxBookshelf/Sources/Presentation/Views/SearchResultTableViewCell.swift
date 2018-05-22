@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class SearchResultTableViewCell: UITableViewCell {
     private let bookView: BookInListView
