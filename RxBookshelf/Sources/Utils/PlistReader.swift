@@ -2,7 +2,7 @@
 //  PlistReader.swift
 //  RxBookshelf
 //
-//  Created by Negro Martin, Mario (Cognizant) on 23/05/2018.
+//  Created by Mario on 23/05/2018.
 //  Copyright © 2018 Mario Negro. All rights reserved.
 //
 
