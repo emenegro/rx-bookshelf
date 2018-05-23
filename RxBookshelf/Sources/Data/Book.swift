@@ -45,7 +45,7 @@ struct Book: Codable, Equatable {
     }
     
     func encode(to encoder: Encoder) throws {
-        // Don't encode id nor isRead because is populated automatically by server
+        // Don't encode id nor isRead because are populated automatically by server
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(title, forKey: .title)
         try container.encode(authors, forKey: .authors)

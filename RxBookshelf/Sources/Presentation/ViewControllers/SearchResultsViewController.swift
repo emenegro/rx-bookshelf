@@ -30,7 +30,7 @@ private extension SearchResultsViewController {
     }
     
     func setupTableView() {
-        tableView.dataSource = nil
+        tableView.dataSource = nil // To not interfere with Rx
         tableView.register(SearchResultTableViewCell.self, forCellReuseIdentifier: SearchResultTableViewCell.reuseIdentifier)
     }
 }
