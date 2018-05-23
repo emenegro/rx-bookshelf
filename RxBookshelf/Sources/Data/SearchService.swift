@@ -40,7 +40,11 @@ class SearchServiceImpl {
 extension SearchServiceImpl: SearchService {
     func search(query: String) -> Observable<BookResult<[Book]>> {
         return url(query: query)
-            .map({ URLRequest(url: $0) })
+            .map({ [configuration] in
+                var request = URLRequest(url: $0)
+                request.timeoutInterval = configuration.requestTimeOutInSeconds
+                return request
+            })
             .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBooks()

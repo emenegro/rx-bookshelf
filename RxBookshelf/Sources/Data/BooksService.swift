@@ -47,7 +47,11 @@ class BooksServiceImpl {
 extension BooksServiceImpl: BooksService {
     func list() -> Observable<BookResult<[Book]>> {
         return url()
-            .map({ URLRequest(url: $0) })
+            .map({ [configuration] in
+                var request = URLRequest(url: $0)
+                request.timeoutInterval = configuration.requestTimeOutInSeconds
+                return request
+            })
             .executeIn(self.networkSession)
             .retry(kNumberOfRetries)
             .mapBooks()
@@ -60,11 +64,12 @@ extension BooksServiceImpl: BooksService {
     
     func add(book: Book) -> Observable<BookResult<Book>> {
         return url()
-            .map({
+            .map({ [configuration] in
                 var request = URLRequest(url: $0)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "post"
                 request.httpBody = try JSONEncoder().encode(book)
+                request.timeoutInterval = configuration.requestTimeOutInSeconds
                 return request
             })
             .executeIn(self.networkSession)
@@ -76,11 +81,12 @@ extension BooksServiceImpl: BooksService {
 
     func markAsRead(book: Book, isRead: Bool) -> Observable<BookResult<Book>> {
         return url(bookId: book.id)
-            .map({
+            .map({ [configuration] in
                 var request = URLRequest(url: $0)
                 request.addValue("application/json", forHTTPHeaderField: "Content-Type")
                 request.httpMethod = "put"
                 request.httpBody = try JSONSerialization.data(withJSONObject: ["isRead": isRead], options: [])
+                request.timeoutInterval = configuration.requestTimeOutInSeconds
                 return request
             })
             .executeIn(self.networkSession)
@@ -92,9 +98,10 @@ extension BooksServiceImpl: BooksService {
 
     func delete(book: Book) -> Observable<BookResult<Book>> {
         return url(bookId: book.id)
-            .map({
+            .map({ [configuration] in
                 var request = URLRequest(url: $0)
                 request.httpMethod = "delete"
+                request.timeoutInterval = configuration.requestTimeOutInSeconds
                 return request
             })
             .executeIn(self.networkSession)

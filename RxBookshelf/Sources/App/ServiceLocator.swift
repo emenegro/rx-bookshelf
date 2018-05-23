@@ -15,7 +15,8 @@ final class ServiceLocator {
         return APIConfiguration(
             backendHost: plistReader.string(key: "backendHost"),
             searchEndpoint: plistReader.string(key: "searchEndpoint"),
-            booksEndpoint: plistReader.string(key: "booksEndpoint")
+            booksEndpoint: plistReader.string(key: "booksEndpoint"),
+            requestTimeOutInSeconds: plistReader.double(key: "requestTimeOutInSeconds")
         )
     }()
     

@@ -12,4 +12,5 @@ struct APIConfiguration {
     let backendHost: String
     let searchEndpoint: String
     let booksEndpoint: String
+    let requestTimeOutInSeconds: TimeInterval
 }
