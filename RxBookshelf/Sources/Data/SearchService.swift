@@ -20,16 +20,16 @@ protocol SearchService {
 
 class SearchServiceImpl {
     let networkSession: URLSession
-    private let host = Configuration.backendHost.stringValue
-    private let searchEndpoint = Configuration.searchEndpoint.stringValue
+    let configuration: APIConfiguration
     
-    init(networkSession: URLSession) {
+    init(networkSession: URLSession, configuration: APIConfiguration) {
         self.networkSession = networkSession
+        self.configuration = configuration
     }
     
     private func url(query: String) -> Observable<URL> {
         if let q = query.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics),
-           let url = URL(string: "\(host)/\(searchEndpoint)?q=\(q)") {
+           let url = URL(string: "\(configuration.backendHost)/\(configuration.searchEndpoint)?q=\(q)") {
             return .just(url)
         } else {
             return .error(BooksError.wrongUrl)

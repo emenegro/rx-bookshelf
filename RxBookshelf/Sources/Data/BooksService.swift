@@ -26,16 +26,16 @@ protocol BooksService {
 
 class BooksServiceImpl {
     let networkSession: URLSession
-    private let host = Configuration.backendHost.stringValue
-    private let booksEndpoint = Configuration.booksEndpoint.stringValue
+    let configuration: APIConfiguration
     private var cachedBooks: [Book] = []
     
-    init(networkSession: URLSession) {
+    init(networkSession: URLSession, configuration: APIConfiguration) {
         self.networkSession = networkSession
+        self.configuration = configuration
     }
     
     private func url(bookId: String = "") -> Observable<URL> {
-        if var url = URL(string: "\(host)/\(booksEndpoint)") {
+        if var url = URL(string: "\(configuration.backendHost)/\(configuration.booksEndpoint)") {
             url.appendPathComponent(bookId)
             return .just(url)
         } else {

@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		3A25CEC620936FDC009C0C15 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC220936FDC009C0C15 /* ServiceLocator.swift */; };
-		3A25CEC720936FDC009C0C15 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A25CEC320936FDC009C0C15 /* Configuration.plist */; };
+		3A25CEC720936FDC009C0C15 /* APIConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3A25CEC320936FDC009C0C15 /* APIConfiguration.plist */; };
 		3A25CEC820936FDC009C0C15 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC420936FDC009C0C15 /* AppDelegate.swift */; };
-		3A25CEC920936FDC009C0C15 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC520936FDC009C0C15 /* Configuration.swift */; };
+		3A25CEC920936FDC009C0C15 /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A25CEC520936FDC009C0C15 /* APIConfiguration.swift */; };
 		3A33708A20938BAA006B6166 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708920938BAA006B6166 /* AppAppearance.swift */; };
 		3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708B209390F4006B6166 /* BookViewModel.swift */; };
 		3A33709020939DD9006B6166 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A33708F20939DD9006B6166 /* L10n.swift */; };
@@ -61,6 +61,7 @@
 		3AFC6440209C68A5000D1173 /* ActivityIndicatorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */; };
 		3AFC6443209C9D61000D1173 /* BookResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC6442209C9D61000D1173 /* BookResult.swift */; };
 		3AFC6445209CE12C000D1173 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFC6444209CE12C000D1173 /* AlertHandler.swift */; };
+		AAC9A37720B59DEC00320B22 /* PlistReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAC9A37620B59DEC00320B22 /* PlistReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,9 +78,9 @@
 		3A127EA0208F7B2D00561B57 /* RxBookshelf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxBookshelf.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A127EB1208F7B2F00561B57 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A25CEC220936FDC009C0C15 /* ServiceLocator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
-		3A25CEC320936FDC009C0C15 /* Configuration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
+		3A25CEC320936FDC009C0C15 /* APIConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIConfiguration.plist; sourceTree = "<group>"; };
 		3A25CEC420936FDC009C0C15 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3A25CEC520936FDC009C0C15 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		3A25CEC520936FDC009C0C15 /* APIConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		3A33708920938BAA006B6166 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		3A33708B209390F4006B6166 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		3A33708F20939DD9006B6166 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorHandler.swift; sourceTree = "<group>"; };
 		3AFC6442209C9D61000D1173 /* BookResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookResult.swift; sourceTree = "<group>"; };
 		3AFC6444209CE12C000D1173 /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = "<group>"; };
+		AAC9A37620B59DEC00320B22 /* PlistReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,8 +194,8 @@
 		3A25CEC120936FDC009C0C15 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				3A25CEC320936FDC009C0C15 /* Configuration.plist */,
-				3A25CEC520936FDC009C0C15 /* Configuration.swift */,
+				3A25CEC320936FDC009C0C15 /* APIConfiguration.plist */,
+				3A25CEC520936FDC009C0C15 /* APIConfiguration.swift */,
 				3A33708920938BAA006B6166 /* AppAppearance.swift */,
 				3A25CEC420936FDC009C0C15 /* AppDelegate.swift */,
 				3A33708F20939DD9006B6166 /* L10n.swift */,
@@ -243,6 +245,7 @@
 				3AFC643F209C68A5000D1173 /* ActivityIndicatorHandler.swift */,
 				3AFC6444209CE12C000D1173 /* AlertHandler.swift */,
 				3A33B32B2091D0120059A34E /* Localizable.swift */,
+				AAC9A37620B59DEC00320B22 /* PlistReader.swift */,
 				3AFC643D209C4B67000D1173 /* UIImage+URL.swift */,
 				3A3370AB20973E71006B6166 /* UITableViewCell+Utils.swift */,
 				3A3370B120979BDD006B6166 /* UIView+Utils.swift */,
@@ -428,7 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A69EC4920907858002D00E8 /* Assets.xcassets in Resources */,
-				3A25CEC720936FDC009C0C15 /* Configuration.plist in Resources */,
+				3A25CEC720936FDC009C0C15 /* APIConfiguration.plist in Resources */,
 				3A3370A220970DBE006B6166 /* BookInListView.xib in Resources */,
 				3A33B32F2091D03F0059A34E /* Localizable.strings in Resources */,
 				3A3370B420979D25006B6166 /* EmptyStateView.xib in Resources */,
@@ -484,6 +487,7 @@
 				3AFC6440209C68A5000D1173 /* ActivityIndicatorHandler.swift in Sources */,
 				3AC7A03B20A04A5900E05714 /* main.swift in Sources */,
 				3AFC6443209C9D61000D1173 /* BookResult.swift in Sources */,
+				AAC9A37720B59DEC00320B22 /* PlistReader.swift in Sources */,
 				3A25CEC620936FDC009C0C15 /* ServiceLocator.swift in Sources */,
 				3A33708C209390F4006B6166 /* BookViewModel.swift in Sources */,
 				3A3370A8209736BE006B6166 /* R.swift in Sources */,
@@ -495,7 +499,7 @@
 				3A69EC4F20907886002D00E8 /* Book.swift in Sources */,
 				3A33708A20938BAA006B6166 /* AppAppearance.swift in Sources */,
 				3AFC6445209CE12C000D1173 /* AlertHandler.swift in Sources */,
-				3A25CEC920936FDC009C0C15 /* Configuration.swift in Sources */,
+				3A25CEC920936FDC009C0C15 /* APIConfiguration.swift in Sources */,
 				3A3370B620986113006B6166 /* UIViewController+Utils.swift in Sources */,
 				3A3370AE20973EC1006B6166 /* URLSession+Rx.swift in Sources */,
 				3A33709D20970BC1006B6166 /* ListViewController.swift in Sources */,
