@@ -110,12 +110,12 @@ private extension ListViewController {
         Observable.of(listViewModel.list, listViewModel.deleteResult).merge()
             .observeOn(MainScheduler.instance)
             .hideActivityIndicator(in: self)
-            .map({ [showErrorAlert] result -> [Book] in
+            .map({ [weak self] result -> [Book] in
                 switch result {
                 case .success(let books):
                     return books
                 case .error(_, let cachedBooks):
-                    showErrorAlert(L10n.errorDownloading.localized)
+                    self?.showErrorAlert(withMessage: L10n.errorDownloading.localized)
                     return cachedBooks ?? []
                 }
             })

@@ -43,12 +43,12 @@ private extension SearchResultsViewController {
     func bindTableView() {
         searchViewModel.results
             .observeOn(MainScheduler.instance)
-            .map({ [showErrorAlert] result -> [Book] in
+            .map({ [weak self] result -> [Book] in
                 switch result {
                 case .success(let books):
                     return books
                 case .error(_):
-                    showErrorAlert(L10n.errorDownloading.localized)
+                    self?.showErrorAlert(withMessage: L10n.errorDownloading.localized)
                     return []
                 }
             })

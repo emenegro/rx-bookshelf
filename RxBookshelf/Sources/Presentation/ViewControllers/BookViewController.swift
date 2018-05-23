@@ -53,12 +53,12 @@ private extension BookViewController {
         bookViewModel.book
             .observeOn(MainScheduler.instance)
             .hideActivityIndicator(in: self)
-            .subscribe(onNext: { [showErrorAlert, populate] result in
+            .subscribe(onNext: { [weak self] result in
                 switch result {
                 case .success(let book):
-                    populate(book)
+                    self?.populate(with: book)
                 case .error(_):
-                    showErrorAlert(L10n.errorExecutingOperation.localized)
+                    self?.showErrorAlert(withMessage: L10n.errorExecutingOperation.localized)
                 }
             })
             .disposed(by: disposeBag)
