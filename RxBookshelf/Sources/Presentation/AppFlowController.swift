@@ -9,11 +9,10 @@
 import UIKit
 
 protocol AppFlowController: class {
-    func configureInitialViewController()
     func showDetailOf(book: Book)
 }
 
-class BookshelfFlowController: UINavigationController, AppFlowController {
+class BookshelfFlowController: UINavigationController {
     private var searchResultsViewController: SearchResultsViewController {
         let searchResultsViewController = SearchResultsViewController.createFromStoryboard()
         ServiceLocator.injectDependencies(to: searchResultsViewController)
@@ -29,7 +28,9 @@ class BookshelfFlowController: UINavigationController, AppFlowController {
         listViewController.searchResultsViewController = searchResultsViewController
         listViewController.flowViewController = self
     }
-    
+}
+
+extension BookshelfFlowController: AppFlowController {
     func showDetailOf(book: Book) {
         let bookViewController = BookViewController.createFromStoryboard()
         ServiceLocator.injectDependencies(to: bookViewController, using: book)
